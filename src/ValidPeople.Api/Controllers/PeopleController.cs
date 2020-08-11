@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using ValidPeople.Application.Interfaces.UseCases;
+using ValidPeople.Domain.Entities;
 
 namespace ValidPeople.Api.Controllers
 {
@@ -6,10 +10,19 @@ namespace ValidPeople.Api.Controllers
     [Route("[controller]")]
     public class PeopleController : ControllerBase
     {
-        [HttpGet]
-        public string Get()
+        private readonly IGetPeopleUseCase getPeopleUseCase;
+
+        public PeopleController(IGetPeopleUseCase getPeopleUseCase)
         {
-            return "Hello world!";
+            this.getPeopleUseCase = getPeopleUseCase;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Person>>> GetAll()
+        {
+            var result = await getPeopleUseCase.Execute();
+            
+            return Ok(result);
         }
     }
 }

@@ -4,5 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ValidPeople.Application\ValidPeople.Application.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -1,18 +1,28 @@
 using System;
 using System.Collections.Generic;
+using ValidPeople.Domain.Enumerations;
 
 namespace ValidPeople.Domain.Entities
 {
     public class Person
     {
-        public Guid Id { get; set; }
-        public Name Name { get; set; }
-        public DateTime Birth { get; set; }
-        public IEnumerable<Parent> Parent { get; set; }
-        public Cpf Cpf { get; set; }
-        public HobbyEnumeration Hobby { get; set; }
-        public decimal Renda { get; set; }
-        public decimal AvarageCollegeGrade { get; set; }
-        public IEnumerable<string> FavoriteGames { get; set; }
+        public Guid Id { get; private set; }
+        public Name Name { get; private set; }
+        public DateTime Birth { get; private set; }
+        public IEnumerable<Parent> Parents { get; private set; }
+        public Cpf Cpf { get; private set; }
+        public HobbyEnumeration Hobby { get; private set; }
+        public decimal Renda { get; private set; }
+
+        public Person(Guid id, Name name, DateTime birth, IEnumerable<Parent> parents, Cpf cpf, HobbyEnumeration hobby, decimal renda)
+        {
+            Id = id;
+            Name = name;
+            Birth = birth;
+            Parents = parents;
+            Cpf = cpf;
+            Hobby = hobby;
+            Renda = renda;
+        }
     }
 }

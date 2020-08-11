@@ -4,8 +4,15 @@ namespace ValidPeople.Domain.Entities
 {
     public class Cpf
     {
-        public string Number { get; set; }
-        public DateTime Expiration { get; set; }
-        public DateTime Emission { get; set; }
+        public string Number { get; private set; }
+        public DateTime Expiration { get; private set; }
+        public DateTime Emission { get; private set; }
+
+        public Cpf(string number, DateTime expiration, DateTime emission)
+        {
+            Number = number;
+            Expiration = expiration;
+            Emission = emission;
+        }
     }
 }

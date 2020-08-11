@@ -1,0 +1,16 @@
+# IDEs
+.vs/
+.vscode/
+
+# Binaries
+bin/
+obj/
+out/
+
+# GeneratedFiles
+*.csproj.user
+
+# Tests
+TestResults/
+StrykerOutput/
+coveragereport/

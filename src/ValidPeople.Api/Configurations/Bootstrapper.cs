@@ -19,7 +19,8 @@ namespace ValidPeople.Api.Configurations
 
         public static IServiceCollection RegisterUseCases(this IServiceCollection services)
         {
-            return services.AddScoped<IGetPeopleUseCase, GetPeopleUseCase>();
+            return services.AddScoped<IGetPeopleUseCase, GetPeopleUseCase>()
+                .AddScoped<IGetPersonUseCase, GetPersonUseCase>();
         }
 
         public static IServiceCollection RegisterRepositories(this IServiceCollection services, IConfiguration configuration)

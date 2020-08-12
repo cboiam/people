@@ -6,6 +6,8 @@ namespace ValidPeople.Domain.Enumerations
     {
         public static HobbyEnumeration Gaming = new HobbyEnumeration(1, "Gaming");
 
+        public HobbyEnumeration() { }
+
         public HobbyEnumeration(int id, string name) 
             : base(id, name) { }
 

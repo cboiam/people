@@ -1,8 +1,11 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ValidPeople.Api.Configurations;
+using ValidPeople.Infra.Mappings;
 
 namespace ValidPeople.Api
 {
@@ -17,6 +20,8 @@ namespace ValidPeople.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.RegisterDependencies(Configuration);
+            services.AddAutoMapper(typeof(ModelToEntityProfile));
             services.AddControllers();
         }
 

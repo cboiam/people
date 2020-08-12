@@ -11,6 +11,8 @@ namespace ValidPeople.Domain.Enumerations
 
         public int Id { get; private set; }
 
+        protected Enumeration() { }
+
         protected Enumeration(int id, string name)
         {
             Id = id;
@@ -26,6 +28,24 @@ namespace ValidPeople.Domain.Enumerations
                                              BindingFlags.DeclaredOnly);
 
             return fields.Select(f => f.GetValue(null)).Cast<T>();
+        }
+
+        public static T FromValue<T>(int id) where T : Enumeration, new()
+        {
+            return Parse<T, int>(id, item => item.Id == id);
+        }
+
+        private static T Parse<T, K>(K value, Func<T, bool> predicate) where T : Enumeration, new()
+        {
+            var matchingItem = GetAll<T>().FirstOrDefault(predicate);
+
+            if (matchingItem == null)
+            {
+                var message = string.Format("'{0}' is not a valid value in {2}", value, typeof(T));
+                throw new ApplicationException(message);
+            }
+
+            return matchingItem;
         }
 
         public override bool Equals(object obj)

@@ -22,6 +22,8 @@ namespace ValidPeople.Api
         {
             services.RegisterDependencies(Configuration);
             services.AddAutoMapper(typeof(ModelToEntityProfile));
+            services.AddSwaggerGen();
+
             services.AddControllers();
         }
 
@@ -34,6 +36,15 @@ namespace ValidPeople.Api
 
             app.UseHttpsRedirection();
             app.UseRouting();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Valid people Api");
+                c.RoutePrefix = string.Empty;
+            });
+
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

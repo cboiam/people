@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using ValidPeople.Application.Interfaces.Repositories;
 using ValidPeople.Application.UseCases;
 using ValidPeople.UnitTests.Fakers.Entities;
+using ValidPeople.UnitTests.Mappings;
 using Xunit;
 
 namespace ValidPeople.UnitTests.UseCases
@@ -16,7 +17,7 @@ namespace ValidPeople.UnitTests.UseCases
         public GetPeopleUseCaseTest()
         {
             personRepository = new Mock<IPersonRepository>();
-            instance = new GetPeopleUseCase(personRepository.Object);
+            instance = new GetPeopleUseCase(personRepository.Object, MapperConfiguration.instance);
         }
 
         [Fact]
@@ -29,7 +30,7 @@ namespace ValidPeople.UnitTests.UseCases
 
             var result = await instance.Execute();
                 
-            result.Should().BeEquivalentTo(people);
+            result.Should().BeEquivalentTo(people.MapToResponse());
         }
     }
 }

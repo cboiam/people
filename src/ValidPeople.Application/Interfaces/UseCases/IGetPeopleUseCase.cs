@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ValidPeople.Domain.Entities;
+using ValidPeople.Application.Responses.People;
 
 namespace ValidPeople.Application.Interfaces.UseCases
 {
     public interface IGetPeopleUseCase
     {
-        Task<IEnumerable<Person>> Execute();
+        Task<IEnumerable<PersonListResponse>> Execute();
     }
 }

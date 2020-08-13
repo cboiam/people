@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using ValidPeople.Domain.Entities;
+using ValidPeople.Application.Responses.People;
 
 namespace ValidPeople.Application.Interfaces.UseCases
 {
     public interface IGetPersonUseCase
     {
-        Task<Person> Execute(Guid id);
+        Task<PersonResponse> Execute(Guid id);
     }
 }

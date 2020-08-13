@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ValidPeople.Api.Controllers;
 using ValidPeople.Application.Interfaces.UseCases;
 using ValidPeople.UnitTests.Fakers.Entities;
+using ValidPeople.UnitTests.Mappings;
 using Xunit;
 
 namespace ValidPeople.UnitTests.Controllers
@@ -26,7 +27,7 @@ namespace ValidPeople.UnitTests.Controllers
         [Fact]
         public async Task GetAll_ReturnsPeople()
         {
-            var people = PersonFaker.Get().Generate(3);
+            var people = PersonFaker.Get().Generate(3).MapToResponse();
 
             getPeopleUseCase.Setup(x => x.Execute())
                 .ReturnsAsync(people);
@@ -41,7 +42,7 @@ namespace ValidPeople.UnitTests.Controllers
         public async Task Get_ReturnsPerson()
         {
             var id = Guid.NewGuid();
-            var person = PersonFaker.Get().Generate();
+            var person = PersonFaker.Get().Generate().MapToResponse();
 
             getPersonUseCase.Setup(x => x.Execute(id))
                 .ReturnsAsync(person);

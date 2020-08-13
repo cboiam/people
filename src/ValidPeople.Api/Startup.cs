@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ValidPeople.Api.Configurations;
+using ValidPeople.Application.Mappings;
 using ValidPeople.Infra.Mappings;
 
 namespace ValidPeople.Api
@@ -21,13 +22,19 @@ namespace ValidPeople.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.RegisterDependencies(Configuration);
-            services.AddAutoMapper(typeof(ModelToEntityProfile));
-            services.AddSwaggerGen();
 
-            services.AddControllers();
+            services.AddAutoMapper(typeof(ModelToEntityProfile),
+                typeof(EntityToResponseProfile));
+
+            services.AddSwaggerGen();
+            services.AddControllers()
+                .AddJsonOptions(config =>
+                {
+                    config.JsonSerializerOptions.IgnoreNullValues = true;
+                });
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -43,7 +50,6 @@ namespace ValidPeople.Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Valid people Api");
                 c.RoutePrefix = string.Empty;
             });
-
 
             app.UseEndpoints(endpoints =>
             {

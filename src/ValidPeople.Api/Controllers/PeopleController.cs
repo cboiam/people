@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ValidPeople.Application.Interfaces.UseCases;
-using ValidPeople.Domain.Entities;
+using ValidPeople.Application.Responses.People;
 
 namespace ValidPeople.Api.Controllers
 {
@@ -21,14 +21,14 @@ namespace ValidPeople.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Person>>> GetAll()
+        public async Task<ActionResult<IEnumerable<PersonListResponse>>> GetAll()
         {
             var result = await getPeopleUseCase.Execute();            
             return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Person>>> Get(Guid id)
+        public async Task<ActionResult<IEnumerable<PersonResponse>>> Get(Guid id)
         {
             var result = await getPersonUseCase.Execute(id);
             return Ok(result);

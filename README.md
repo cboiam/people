@@ -4,7 +4,7 @@ This project is being developed as a trainment in the proccess of creating valid
 
 ## Usage
 
-Read and understand the existing code, add the FluentValidation package to the project and integrate it with the web api to start writing the validations described in the [Story](/#Story) section.
+Read and understand the existing code, add the FluentValidation package to the project and integrate it with the web api to start writing the validations described in the [Story](#Story) section.
 
 ## Story
 

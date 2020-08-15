@@ -52,5 +52,12 @@ namespace ValidPeople.UnitTests.Controllers
             response.Result.Should().BeOfType<OkObjectResult>()
                 .Which.Value.Should().BeEquivalentTo(person.MapToViewModel());
         }
+
+        [Fact]
+        public async Task Get_ReturnsNotFound_WhenPersonIsNull()
+        {
+            var response = await instance.Get(Guid.NewGuid());
+            response.Result.Should().BeOfType<NotFoundResult>();
+        }
     }
 }

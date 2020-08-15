@@ -1,12 +1,17 @@
 ﻿@page "/people/{id}"
+@using System.Text.Json
 @using ValidPeople.Web.Shared.People
 @inject HttpClient Http
 
 <h3>Person Detail</h3>
 
-@if (person == null)
+@if (!loaded)
 {
     <p><em>Loading...</em></p>
+}
+else if (person == null)
+{
+    <p><em>Person doesn't exist!</em></p>
 }
 else
 {
@@ -65,10 +70,21 @@ else
 @code {
     [Parameter]
     public string Id { get; set; }
+    private bool loaded;
     private PersonViewModel person;
 
     protected override async Task OnInitializedAsync()
     {
-        person = await Http.GetFromJsonAsync<PersonViewModel>("/api/people/" + Id);
+        var personResponse = await Http.GetAsync("/api/people/" + Id);
+
+        loaded = true;
+
+        if (!personResponse.IsSuccessStatusCode)
+        {
+            return;
+        }
+
+        var json = await personResponse.Content.ReadAsStringAsync();
+        person = JsonSerializer.Deserialize<PersonViewModel>(json);
     }
 }

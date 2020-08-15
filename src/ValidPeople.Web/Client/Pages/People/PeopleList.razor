@@ -4,9 +4,13 @@
 
 <h3>People List</h3>
 
-@if (people == null)
+@if (!loaded)
 {
     <p><em>Loading...</em></p>
+}
+else if (people == null || !people.Any())
+{
+    <p><em>There are no one registered yet</em></p>
 }
 else
 {
@@ -27,10 +31,12 @@ else
 }
 
 @code {
+    private bool loaded;
     private IEnumerable<PersonListViewModel> people;
 
     protected override async Task OnInitializedAsync()
     {
         people = await Http.GetFromJsonAsync<IEnumerable<PersonListViewModel>>("/api/people");
+        loaded = true;
     }
 }

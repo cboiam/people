@@ -38,6 +38,11 @@ namespace ValidPeople.Web.Server.Controllers
             var person = await getPersonUseCase.Execute(id);
             var result = mapper.Map<PersonViewModel>(person);
             
+            if(result == null)
+            {
+                return NotFound();
+            }
+
             return Ok(result);
         }
     }

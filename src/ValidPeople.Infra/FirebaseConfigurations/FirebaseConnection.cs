@@ -6,7 +6,6 @@ using Google.Cloud.Firestore;
 using Google.Cloud.Firestore.V1;
 using Microsoft.Extensions.Options;
 using System.IO;
-using System.Threading.Tasks;
 using ValidPeople.Infra.Interfaces;
 
 namespace ValidPeople.Infra.FirebaseConfigurations

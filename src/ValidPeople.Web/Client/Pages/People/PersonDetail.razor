@@ -1,0 +1,74 @@
+﻿@page "/people/{id}"
+@using ValidPeople.Web.Shared.People
+@inject HttpClient Http
+
+<h3>Person Detail</h3>
+
+@if (person == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="person-detail">
+                <h4 class="person-detail-name">@person.Name.GetFormattedName()</h4>
+                <div class="person-detail-tab">
+                    <div>
+                        <span class="person-detail-data-label">Birth Date</span>
+                        @person.Birth.ToString("dd/MM/yyyy")
+                    </div>
+                    <div>
+                        <span class="person-detail-data-label">Revenue</span>
+                        $ @person.Revenue
+                    </div>
+                    <div>
+                        <span class="person-detail-data-label">Hobby</span>
+                        @person.Hobby.Name
+                    </div>
+                    <div class="person-detail-data person-detail-data-label">Cpf</div>
+                    <div class="person-detail-data person-detail-tab">
+                        <div>
+                            <span class="person-detail-data-label">Number</span>
+                            @person.Cpf.Number
+                        </div>
+                        <div>
+                            <span class="person-detail-data-label">Emission Date</span>
+                            @person.Cpf.Emission.ToString("dd/MM/yyyy")
+                        </div>
+                        <div>
+                            <span class="person-detail-data-label">Expiration Date</span>
+                            @person.Cpf.Expiration.ToString("dd/MM/yyyy")
+                        </div>
+                    </div>
+                    <div class="person-detail-data person-detail-data-label">Parents</div>
+                    @foreach (var parent in person.Parents)
+                    {
+                        <div class="person-detail-data person-detail-tab">
+                            <div>
+                                <span class="person-detail-data-label">Name</span>
+                                @parent.Name.GetFormattedName()
+                            </div>
+                            <div>
+                                <span class="person-detail-data-label">Relation</span>
+                                @parent.Relation.Name
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    private PersonViewModel person;
+
+    protected override async Task OnInitializedAsync()
+    {
+        person = await Http.GetFromJsonAsync<PersonViewModel>("/api/people/" + Id);
+    }
+}

@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\ValidPeople.Api\ValidPeople.Api.csproj" />
     <ProjectReference Include="..\..\src\ValidPeople.Application\ValidPeople.Application.csproj" />
+    <ProjectReference Include="..\..\src\ValidPeople.Web\Server\ValidPeople.Web.Server.csproj" />
   </ItemGroup>
 
 </Project>

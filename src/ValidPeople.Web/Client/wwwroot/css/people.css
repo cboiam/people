@@ -1,0 +1,46 @@
+﻿.people-list-card {
+    width: 95%;
+    margin: 15px 2.5% 0 2.5%;
+    padding: 11px 15px;
+    border: 2px solid #310b4c;
+    transition: all .4s;
+    color: #000000;
+}
+
+    .people-list-card:hover {
+        width: 100%;
+        margin: 15px 0 0 0;
+        padding: 16px 15px;
+        background: #310b4c;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+.people-list-data {
+    display: flex;
+}
+
+    .people-list-data div {
+        width: 100%;
+    }
+
+.person-detail {
+    margin-top: 15px;
+}
+
+.person-detail-name {
+    margin-bottom: 10px;
+}
+
+.person-detail-data {
+    margin-top: 15px;
+}
+
+.person-detail-data-label {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.person-detail-tab {
+    margin-left: 25px;
+}

@@ -1,0 +1,36 @@
+﻿@page "/people"
+@using ValidPeople.Web.Shared.People
+@inject HttpClient Http
+
+<h3>People List</h3>
+
+@if (people == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            @foreach (var person in people)
+            {
+                <a class="card people-list-card" href=@("/people/" + person.Id)>
+                    <div class="people-list-data">
+                        <div>@person.Name</div>
+                        <div>@person.Birth.ToString("dd/MM/yyyy")</div>
+                        <div>@person.Cpf</div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+}
+
+@code {
+    private IEnumerable<PersonListViewModel> people;
+
+    protected override async Task OnInitializedAsync()
+    {
+        people = await Http.GetFromJsonAsync<IEnumerable<PersonListViewModel>>("/api/people");
+    }
+}

@@ -1,5 +1,6 @@
 ﻿using ValidPeople.Application.Mappings;
 using ValidPeople.Infra.Mappings;
+using ValidPeople.Web.Server.Mappings;
 
 namespace ValidPeople.UnitTests.Mappings
 {
@@ -9,6 +10,7 @@ namespace ValidPeople.UnitTests.Mappings
         {
             config.AddProfile<EntityToResponseProfile>();
             config.AddProfile<ModelToEntityProfile>();
+            config.AddProfile<ResponseToViewModelMappings>();
         }).CreateMapper();
     }
 }

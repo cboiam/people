@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
 using System.Threading.Tasks;
-using ValidPeople.Api.Controllers;
 using ValidPeople.Application.Interfaces.UseCases;
 using ValidPeople.UnitTests.Fakers.Entities;
 using ValidPeople.UnitTests.Mappings;
+using ValidPeople.Web.Server.Controllers;
 using Xunit;
 
 namespace ValidPeople.UnitTests.Controllers
@@ -21,36 +21,36 @@ namespace ValidPeople.UnitTests.Controllers
         {
             getPeopleUseCase = new Mock<IGetPeopleUseCase>();
             getPersonUseCase = new Mock<IGetPersonUseCase>();
-            instance = new PeopleController(getPeopleUseCase.Object, getPersonUseCase.Object);
+            instance = new PeopleController(getPeopleUseCase.Object, getPersonUseCase.Object, MapperConfiguration.instance);
         }
 
         [Fact]
         public async Task GetAll_ReturnsPeople()
         {
-            var people = PersonFaker.Get().Generate(3).MapToResponse();
+            var people = PersonFaker.Get().Generate(3);
 
             getPeopleUseCase.Setup(x => x.Execute())
-                .ReturnsAsync(people);
+                .ReturnsAsync(people.MapToResponse());
 
             var response = await instance.GetAll();
 
             response.Result.Should().BeOfType<OkObjectResult>()
-                .Which.Value.Should().BeEquivalentTo(people);
+                .Which.Value.Should().BeEquivalentTo(people.MapToViewModel());
         }
 
         [Fact]
         public async Task Get_ReturnsPerson()
         {
             var id = Guid.NewGuid();
-            var person = PersonFaker.Get().Generate().MapToResponse();
+            var person = PersonFaker.Get().Generate();
 
             getPersonUseCase.Setup(x => x.Execute(id))
-                .ReturnsAsync(person);
+                .ReturnsAsync(person.MapToResponse());
 
             var response = await instance.Get(id);
 
             response.Result.Should().BeOfType<OkObjectResult>()
-                .Which.Value.Should().BeEquivalentTo(person);
+                .Which.Value.Should().BeEquivalentTo(person.MapToViewModel());
         }
     }
 }

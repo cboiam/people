@@ -7,7 +7,7 @@ using ValidPeople.Infra.FirebaseConfigurations;
 using ValidPeople.Infra.Interfaces;
 using ValidPeople.Infra.Repositories;
 
-namespace ValidPeople.Api.Configurations
+namespace ValidPeople.Web.Server.Configurations
 {
     public static class Bootstrapper
     {

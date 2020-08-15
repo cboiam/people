@@ -10,8 +10,8 @@ namespace ValidPeople.Domain.Enumerations
         public RelationEnumeration(int id, string name) 
             : base(id, name) { }
 
-        public static RelationEnumeration Pai = new RelationEnumeration(1, "Father");
-        public static RelationEnumeration Mae = new RelationEnumeration(2, "Mother");
+        public static RelationEnumeration Father = new RelationEnumeration(1, "Father");
+        public static RelationEnumeration Mother = new RelationEnumeration(2, "Mother");
 
         public static IEnumerable<RelationEnumeration> GetAll() => GetAll<RelationEnumeration>();
     }

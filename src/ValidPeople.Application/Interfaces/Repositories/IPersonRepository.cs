@@ -9,5 +9,6 @@ namespace ValidPeople.Application.Interfaces.Repositories
     {
         Task<IEnumerable<Person>> GetAll();
         Task<Person> Get(Guid id);
+        Task<bool> Delete(Guid id);
     }
 }

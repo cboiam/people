@@ -10,7 +10,7 @@ Read and understand the existing code, add the FluentValidation package to the p
 
 ## Running the application
 
-Run command inside the api project folder:
+Run command inside the web server project folder:
 
 ```
 $ dotnet run
@@ -27,6 +27,7 @@ $ dotnet test
 ## Built with
 
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) - _Software Developmet Kit (SDK)_
+- [Blazor](http://blazor.net/) - _Build client web apps with C#_
 - [Fluent Validation](https://fluentvalidation.net/) - _A popular .NET library for building strongly-typed validation rules_
 - [xUnit.net](https://xunit.net/) - _Unit Test Framework_
 - [Fluent Assertions](https://fluentassertions.com/) - _Unit Test Assertions Extension Methods_

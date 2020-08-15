@@ -21,8 +21,14 @@ else
                 <a class="card people-list-card" href=@("/people/" + person.Id)>
                     <div class="people-list-data">
                         <div>@person.Name</div>
+                        <div>@person.Email</div>
                         <div>@person.Birth.ToString("dd/MM/yyyy")</div>
-                        <div>@person.Cpf</div>
+                        <button class="btn people-list-action" 
+                                @onclick="@(() => Delete(person))" 
+                                @onclick:stopPropagation="true" 
+                                @onclick:preventDefault="true">
+                            <span class="oi oi-trash" aria-hidden="true"></span>
+                        </button>
                     </div>
                 </a>
             }
@@ -32,11 +38,21 @@ else
 
 @code {
     private bool loaded;
-    private IEnumerable<PersonListViewModel> people;
+    private List<PersonListViewModel> people;
 
     protected override async Task OnInitializedAsync()
     {
-        people = await Http.GetFromJsonAsync<IEnumerable<PersonListViewModel>>("/api/people");
+        people = await Http.GetFromJsonAsync<List<PersonListViewModel>>("/api/people");
         loaded = true;
+    }
+
+    private async Task Delete(PersonListViewModel person)
+    {
+        var response = await Http.DeleteAsync("/api/people/" + person.Id.ToString());
+
+        if (response.IsSuccessStatusCode)
+        {
+            people.Remove(person);
+        }
     }
 }

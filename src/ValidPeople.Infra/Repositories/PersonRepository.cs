@@ -32,11 +32,28 @@ namespace ValidPeople.Infra.Repositories
         {
             var data = await Collection.WhereEqualTo("Id", id.ToString())
                 .GetSnapshotAsync();
-            
+
             var person = data.FirstOrDefault()?
                 .ConvertTo<Models.Person>();
 
             return mapper.Map<Person>(person);
+        }
+
+        public async Task<bool> Delete(Guid id)
+        {
+            var data = await Collection.WhereEqualTo("Id", id.ToString())
+                .GetSnapshotAsync();
+
+            var document = data.FirstOrDefault();
+
+            if (document == null)
+            {
+                return false;
+            }
+
+            var result = await document.Reference.DeleteAsync();
+            
+            return result != null;
         }
     }
 }

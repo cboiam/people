@@ -15,13 +15,15 @@ namespace ValidPeople.UnitTests.Controllers
     {
         private readonly Mock<IGetPeopleUseCase> getPeopleUseCase;
         private readonly Mock<IGetPersonUseCase> getPersonUseCase;
+        private readonly Mock<IDeletePersonUseCase> deletePersonUseCase;
         private readonly PeopleController instance;
 
         public PeopleControllerTest()
         {
             getPeopleUseCase = new Mock<IGetPeopleUseCase>();
             getPersonUseCase = new Mock<IGetPersonUseCase>();
-            instance = new PeopleController(getPeopleUseCase.Object, getPersonUseCase.Object, MapperConfiguration.instance);
+            deletePersonUseCase = new Mock<IDeletePersonUseCase>();
+            instance = new PeopleController(getPeopleUseCase.Object, getPersonUseCase.Object, deletePersonUseCase.Object, MapperConfiguration.instance);
         }
 
         [Fact]
@@ -58,6 +60,28 @@ namespace ValidPeople.UnitTests.Controllers
         {
             var response = await instance.Get(Guid.NewGuid());
             response.Result.Should().BeOfType<NotFoundResult>();
+        }
+
+        [Fact]
+        public async Task Delete_ReturnsNoContent_WhenDeletionSucceed()
+        {
+            var id = Guid.NewGuid();
+            deletePersonUseCase.Setup(x => x.Execute(id))
+                .ReturnsAsync(true);
+
+            var response = await instance.Delete(id);
+            response.Should().BeOfType<NoContentResult>();
+        }
+
+        [Fact]
+        public async Task Delete_ReturnsNotFound_WhenDeletionFailed()
+        {
+            var id = Guid.NewGuid();
+            deletePersonUseCase.Setup(x => x.Execute(id))
+                .ReturnsAsync(false);
+
+            var response = await instance.Delete(id);
+            response.Should().BeOfType<NotFoundResult>();
         }
     }
 }

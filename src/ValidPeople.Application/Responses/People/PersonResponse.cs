@@ -8,6 +8,7 @@ namespace ValidPeople.Application.Responses.People
     {
         public Guid Id { get; set; }
         public NameResponse Name { get; set; }
+        public string Email { get; set; }
         public DateTime Birth { get; set; }
         public IEnumerable<ParentResponse> Parents { get; set; }
         public CpfResponse Cpf { get; set; }

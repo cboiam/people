@@ -14,6 +14,9 @@ namespace ValidPeople.Infra.Models
         public Name Name { get; set; }
 
         [FirestoreProperty]
+        public string Email { get; set; }
+
+        [FirestoreProperty]
         public DateTime Birth { get; set; }
 
         [FirestoreProperty]

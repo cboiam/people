@@ -8,16 +8,18 @@ namespace ValidPeople.Domain.Entities
     {
         public Guid Id { get; private set; }
         public Name Name { get; private set; }
+        public string Email { get; private set; }
         public DateTime Birth { get; private set; }
         public IEnumerable<Parent> Parents { get; private set; }
         public Cpf Cpf { get; private set; }
         public HobbyEnumeration Hobby { get; private set; }
         public double Revenue { get; private set; }
 
-        public Person(Guid id, Name name, DateTime birth, IEnumerable<Parent> parents, Cpf cpf, HobbyEnumeration hobby, double revenue)
+        public Person(Guid id, Name name, string email, DateTime birth, IEnumerable<Parent> parents, Cpf cpf, HobbyEnumeration hobby, double revenue)
         {
             Id = id;
             Name = name;
+            Email = email;
             Birth = birth;
             Parents = parents;
             Cpf = cpf;

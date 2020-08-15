@@ -6,10 +6,12 @@ namespace ValidPeople.Infra.Repositories
     public abstract class Repository
     {
         public abstract string CollectionName { get; }
+        public FirestoreDb Database { get; }
         protected CollectionReference Collection { get; }
 
-        public Repository(IFirebaseConnection firebaseConnection)
+        protected Repository(IFirebaseConnection firebaseConnection)
         {
+            Database = firebaseConnection.Database;
             Collection = firebaseConnection.Database.Collection(CollectionName);
         }
     }

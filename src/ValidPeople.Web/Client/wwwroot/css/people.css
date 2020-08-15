@@ -18,11 +18,21 @@
 
 .people-list-data {
     display: flex;
+    align-items: center;
 }
 
     .people-list-data div {
         width: 100%;
     }
+
+.people-list-action {
+    color: #000000;
+    padding: 0;
+}
+
+.people-list-card:hover .people-list-action {
+    color: #ffffff;
+}
 
 .person-detail {
     margin-top: 15px;
@@ -44,3 +54,28 @@
 .person-detail-tab {
     margin-left: 25px;
 }
+
+.person-detail-controll {
+    margin-top: 25px;
+}
+
+    .person-detail-controll .btn {
+        color: #000000;
+        border: 2px solid #310b4c;
+        background: #ffffff;
+        transition: all .4s;
+    }
+
+        .person-detail-controll .btn:hover {
+            color: #ffffff;
+            background: #310b4c;
+        }
+
+        .person-detail-controll .btn .oi {
+            color: #310b4c;
+            transition: all .4s;
+        }
+
+        .person-detail-controll .btn:hover .oi {
+            color: #ffffff;
+        }

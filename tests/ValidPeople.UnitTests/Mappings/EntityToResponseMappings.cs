@@ -16,6 +16,7 @@ namespace ValidPeople.UnitTests.Mappings
             {
                 Id = person.Id,
                 Birth = person.Birth,
+                Email = person.Email,
                 Cpf = person.Cpf.Number,
                 Name = person.Name.ToString()
             });
@@ -27,6 +28,7 @@ namespace ValidPeople.UnitTests.Mappings
             {
                 Id = person.Id,
                 Birth = person.Birth,
+                Email = person.Email,
                 Name = new NameResponse
                 {
                     FirstName = person.Name.FirstName,
@@ -58,6 +60,7 @@ namespace ValidPeople.UnitTests.Mappings
             {
                 Id = person.Id,
                 Birth = person.Birth,
+                Email = person.Email,
                 Cpf = person.Cpf.Number,
                 Name = person.Name.ToString()
             });
@@ -69,6 +72,7 @@ namespace ValidPeople.UnitTests.Mappings
             {
                 Id = person.Id,
                 Birth = person.Birth,
+                Email = person.Email,
                 Name = new NameViewModel
                 {
                     FirstName = person.Name.FirstName,

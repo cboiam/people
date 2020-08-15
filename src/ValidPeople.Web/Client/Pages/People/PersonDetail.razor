@@ -1,7 +1,7 @@
 ﻿@page "/people/{id}"
-@using System.Text.Json
 @using ValidPeople.Web.Shared.People
 @inject HttpClient Http
+@inject NavigationManager NavigationManager
 
 <h3>Person Detail</h3>
 
@@ -23,6 +23,10 @@ else
                     <div>
                         <span class="person-detail-data-label">Birth Date</span>
                         @person.Birth.ToString("dd/MM/yyyy")
+                    </div>
+                    <div>
+                        <span class="person-detail-data-label">Email</span>
+                        @person.Email
                     </div>
                     <div>
                         <span class="person-detail-data-label">Revenue</span>
@@ -64,6 +68,11 @@ else
                 </div>
             </div>
         </div>
+        <div class="row person-detail-controll">
+            <button class="btn" @onclick="Delete">
+                <span class="oi oi-trash" aria-hidden="true"></span> Delete
+            </button>
+        </div>
     </div>
 }
 
@@ -84,7 +93,16 @@ else
             return;
         }
 
-        var json = await personResponse.Content.ReadAsStringAsync();
-        person = JsonSerializer.Deserialize<PersonViewModel>(json);
+        person = await personResponse.Content.ReadFromJsonAsync<PersonViewModel>();
+    }
+
+    private async Task Delete()
+    {
+        var response = await Http.DeleteAsync("/api/people/" + person.Id.ToString());
+
+        if (response.IsSuccessStatusCode)
+        {
+            NavigationManager.NavigateTo("/people");
+        }
     }
 }

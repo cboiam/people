@@ -41,7 +41,7 @@ namespace ValidPeople.Domain.Enumerations
 
             if (matchingItem == null)
             {
-                var message = string.Format("'{0}' is not a valid value in {2}", value, typeof(T));
+                var message = string.Format("'{0}' is not a valid value in {1}", value, typeof(T).Name);
                 throw new ApplicationException(message);
             }
 

@@ -1,5 +1,4 @@
-﻿using Firebase.Database;
-using Google.Cloud.Firestore;
+﻿using Google.Cloud.Firestore;
 
 namespace ValidPeople.Infra.Interfaces
 {

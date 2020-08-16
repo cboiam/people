@@ -16,6 +16,8 @@ Run command inside the web server project folder:
 $ dotnet run
 ```
 
+Access the Api documentation at https://localhost:5001/api/docs or the UI at https://localhost:5001.
+
 ## Running the tests
 
 Run command on the root folder or inside a test project folder:

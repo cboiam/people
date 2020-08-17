@@ -4,9 +4,34 @@ This project is being developed as a trainment in the proccess of creating valid
 
 ## Usage
 
-Read and understand the existing code, add the FluentValidation package to the project and integrate it with the web api to start writing the validations described in the [Story](#Story) section.
+Read and understand the existing code, add the FluentValidation package to the project and integrate it with the web api to start writing the validations described in the [Stories](#Stories) section.
+Treat the validation errors to be in the structure of a List of ErrorViewModel.
 
-## Story
+## Stories
+
+### Add person validations
+
+Add the following validations to the POST endpoint
+
+| Field                 | Validation                                              | Fail message                             |
+| --------------------- | ------------------------------------------------------- | ---------------------------------------- |
+| Name.FirstName        | Mandatory and without empty spaces                      | First name should not be empty.          |
+| Name.LastName         | Mandatory and without empty spaces                      | Last name should not be empty.           |
+| Name                  | Combined names should have a maximum of 100 characteres | Name is too long.                        |
+| Birth                 | Should be in the past                                   | You weren't born yet.                    |
+| Revenue               | Positive                                                | Revenue shouldn't be negative.           |
+| Email                 | Mandatory when age is lesser then 60                    | Email should not be empty.               |
+| Email                 | Email format when filled                                | This is an invalid email.                |
+| Hobby                 | Is contained in the HobbyEnumeration                    | Select one of the provided hobbies.      |
+| Hobby                 | Should not be Sports when Profession is Developer       | I doubt it.                              |
+| Parent.Name.FirstName | Mandatory and without empty spaces                      | Parent's First name should not be empty. |
+| Parent.Name.LastName  | Mandatory and without empty spaces                      | Parent's Last name should not be empty.  |
+| Parent.Relation       | Is contained in the RelationEnumeration                 | Select one of the provided relations.    |
+| Cpf.Number            | Mandatory                                               | Cpf number should not be empty.          |
+| Cpf.Number            | Formatted with mask 999.999.999-00                      | Cpf format is invalid.                   |
+| Cpf.Number            | Digit validation                                        | Cpf is invalid.                          |
+| Cpf.Emission          | Should be in the past                                   | Emission should be in the past.          |
+| Cpf.Expiration        | Should be in the future                                 | Expiration should be in the future.      |
 
 ## Running the application
 

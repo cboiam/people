@@ -23,15 +23,18 @@ else
                         <div>@person.Name</div>
                         <div>@person.Email</div>
                         <div>@person.Birth.ToString("dd/MM/yyyy")</div>
-                        <button class="btn people-list-action" 
-                                @onclick="@(() => Delete(person))" 
-                                @onclick:stopPropagation="true" 
+                        <button class="btn people-list-action"
+                                @onclick="@(() => Delete(person))"
+                                @onclick:stopPropagation="true"
                                 @onclick:preventDefault="true">
                             <span class="oi oi-trash" aria-hidden="true"></span>
                         </button>
                     </div>
                 </a>
             }
+            <a class="card people-list-card people-list-add" href="/people/new">
+                <span class="oi oi-plus" aria-hidden="true"></span>
+            </a>
         </div>
     </div>
 }

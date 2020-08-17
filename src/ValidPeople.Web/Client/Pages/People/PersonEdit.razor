@@ -1,0 +1,62 @@
+﻿@page "/people/{id}/edit"
+@using ValidPeople.Web.Shared
+@using ValidPeople.Web.Shared.People
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+@if (!loaded)
+{
+    <h3>Edit Person</h3>
+    <p><em>Loading...</em></p>
+}
+else if (person == null)
+{
+    <h3>Edit Person</h3>
+    <p><em>Person doesn't exist!</em></p>
+}
+else
+{
+    <h3>Edit @person.Name.GetFormattedName()</h3>
+    <PersonForm Person="person"
+                Errors="errors"
+                ShowNotification="showNotification"
+                Submit="Submit" />
+}
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    private bool loaded;
+    private bool showNotification;
+    private IEnumerable<ErrorViewModel> errors;
+    private PersonViewModel person;
+
+    private async Task Submit()
+    {
+        var response = await Http.PutAsJsonAsync("/api/people/" + Id, person);
+
+        if (response.IsSuccessStatusCode)
+        {
+            NavigationManager.NavigateTo("/people/" + Id);
+            return;
+        }
+
+        var errors = await response.Content.ReadFromJsonAsync<IEnumerable<ErrorViewModel>>();
+        showNotification = true;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var personResponse = await Http.GetAsync("/api/people/" + Id);
+
+        loaded = true;
+
+        if (!personResponse.IsSuccessStatusCode)
+        {
+            return;
+        }
+
+        person = await personResponse.Content.ReadFromJsonAsync<PersonViewModel>();
+    }
+}

@@ -72,6 +72,9 @@ else
             <button class="btn person-controll-button" @onclick="Delete">
                 <span class="oi oi-trash" aria-hidden="true"></span> Delete
             </button>
+            <a class="btn person-controll-button" href="@($"/people/{Id}/edit")">
+                <span class="oi oi-pencil" aria-hidden="true"></span> Edit
+            </a>
         </div>
     </div>
 }

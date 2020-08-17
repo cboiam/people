@@ -1,0 +1,140 @@
+﻿@using ValidPeople.Web.Shared
+@using ValidPeople.Web.Shared.People
+@inject HttpClient Http
+
+<div class="container">
+    <div class="row">
+        <EditForm Model="Person" OnSubmit="Submit">
+            <div class="person-form">
+                <div class="person-form-data person-form-data-label">Name</div>
+                <div class="person-form-data person-form-tab">
+                    <div>
+                        <label class="person-form-data-label">First Name</label>
+                        <InputText @bind-Value="Person.Name.FirstName" class="form-control" />
+                    </div>
+                    <div>
+                        <label class="person-form-data-label">Last Name</label>
+                        <InputText @bind-Value="Person.Name.LastName" class="form-control" />
+                    </div>
+                </div>
+                <div>
+                    <label class="person-form-data-label">Birth Date</label>
+                    <InputDate @bind-Value="@Person.Birth" class="form-control"></InputDate>
+                </div>
+                <div>
+                    <label class="person-form-data-label">Email</label>
+                    <InputText @bind-Value="Person.Email" class="form-control" />
+                </div>
+                <div>
+                    <label class="person-form-data-label">Revenue</label>
+                    <InputNumber @bind-Value="Person.Revenue" class="form-control" />
+                </div>
+                <div>
+                    <label class="person-form-data-label">Hobby</label>
+                    <InputSelect @bind-Value="Person.Hobby" class="form-control">
+                        @foreach (var hobby in resource.Hobbies)
+                        {
+                            <option value="@hobby.Id" selected="@(hobby.Id == Person.Hobby?.Id)">@hobby.Name</option>
+                        }
+                    </InputSelect>
+                </div>
+                <div class="person-form-data person-form-data-label">Cpf</div>
+                <div class="person-form-data person-form-tab">
+                    <div>
+                        <label class="person-form-data-label">Number</label>
+                        <InputText @bind-Value="Person.Cpf.Number" class="form-control" />
+                    </div>
+                    <div>
+                        <label class="person-form-data-label">Emission Date</label>
+                        <InputDate @bind-Value="@Person.Cpf.Emission" class="form-control"></InputDate>
+                    </div>
+                    <div>
+                        <label class="person-form-data-label">Expiration Date</label>
+                        <InputDate @bind-Value="@Person.Cpf.Expiration" class="form-control"></InputDate>
+                    </div>
+                </div>
+                <div class="person-form-data person-form-parents">
+                    <div class="person-form-data-label">Parents</div>
+                    @if (CanAddParents)
+                    {
+                        <button class="btn btn-sm person-controll-button" @onclick="AddParent" type="button">Add parent</button>
+                    }
+                </div>
+                @foreach (var parent in Person.Parents)
+                {
+                    <div class="person-form-data person-form-tab">
+                        <div class="person-form-data person-form-parent-name">
+                            <div class="person-form-data-label">Name</div>
+                            <button class="btn btn-sm person-controll-button" type="button" @onclick="() => RemoveParent(parent)"><span class="oi oi-x" aria-hidden="true"></span></button>
+                        </div>
+                        <div class="person-form-data person-form-tab">
+                            <div>
+                                <label class="person-form-data-label">First Name</label>
+                                <InputText @bind-Value="parent.Name.FirstName" class="form-control" />
+                            </div>
+                            <div>
+                                <label class="person-form-data-label">Last Name</label>
+                                <InputText @bind-Value="parent.Name.LastName" class="form-control" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="person-form-data-label">Relation</label>
+                            <InputSelect @bind-Value="parent.Relation" class="form-control">
+                                @foreach (var relation in resource.ParentRelations)
+                                    {
+                                    <option value="@relation.Id" selected="@(relation.Id == parent.Relation?.Id)">@relation.Name</option>
+                                    }
+                            </InputSelect>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="person-form-controll">
+                <button class="btn person-controll-button" type="submit">Submit</button>
+                <button class="btn person-controll-button" type="reset">Reset</button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+<Notification Errors="Errors" ShowNotification="ShowNotification" Dismiss="HideNotification" />
+
+@code {
+    [Parameter]
+    public bool ShowNotification { get; set; }
+
+    [Parameter]
+    public IEnumerable<ErrorViewModel> Errors { get; set; }
+
+    [Parameter]
+    public PersonViewModel Person { get; set; }
+
+    [Parameter]
+    public Func<Task> Submit { get; set; }
+
+    private bool CanAddParents => Person.Parents.Count < 2;
+    private void HideNotification() => ShowNotification = false;
+    private Resource resource = new Resource
+    {
+        Hobbies = new List<EnumerationViewModel>(),
+        ParentRelations = new List<EnumerationViewModel>()
+    };
+
+    private void AddParent()
+    {
+        Person.Parents.Add(new ParentViewModel
+        {
+            Name = new NameViewModel()
+        });
+    }
+
+    private void RemoveParent(ParentViewModel parent)
+    {
+        Person.Parents.Remove(parent);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        resource = await Http.GetFromJsonAsync<Resource>("/api/resources");
+    }
+}

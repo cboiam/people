@@ -34,7 +34,11 @@
     color: #ffffff;
 }
 
-.person-detail, 
+.people-list-add {
+    text-align: center;
+}
+
+.person-detail,
 .person-form {
     margin-top: 15px;
 }
@@ -43,7 +47,7 @@
     margin-bottom: 10px;
 }
 
-.person-detail-data, 
+.person-detail-data,
 .person-form-data {
     margin-top: 15px;
 }
@@ -66,7 +70,18 @@
 .person-detail-controll,
 .person-form-controll {
     margin-top: 25px;
+    margin-bottom: 40px;
 }
+
+    .person-detail-controll .person-controll-button,
+    .person-form-controll .person-controll-button {
+        margin-left: 15px;
+    }
+
+        .person-detail-controll .person-controll-button:first-child,
+        .person-form-controll .person-controll-button:first-child {
+            margin-left: 0;
+        }
 
 .person-controll-button {
     color: #000000;

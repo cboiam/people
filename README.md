@@ -4,8 +4,12 @@ This project is being developed as a trainment in the proccess of creating valid
 
 ## Usage
 
-Read and understand the existing code, add the FluentValidation package to the project and integrate it with the web api to start writing the validations described in the [Stories](#Stories) section.
-Treat the validation errors to be in the structure of a List of ErrorViewModel.
+Read and understand the existing code then do the following tasks.
+
+- Add the FluentValidation package to the project.
+- Integrate FluentValidation with the web api (https://docs.fluentvalidation.net/en/latest/aspnet.html).
+- Treat the validation errors to be in the structure of a List of ErrorViewModel.
+- Start writing the validations described in the [Stories](#Stories) section. (All validators should be tested, preferably using helpers https://docs.fluentvalidation.net/en/latest/testing.html)
 
 ## Stories
 

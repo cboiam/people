@@ -24,7 +24,7 @@ Add the following validations to the POST endpoint
 | Name                  | Combined names should have a maximum of 100 characteres | Name is too long.                        |
 | Birth                 | Should be in the past                                   | You weren't born yet.                    |
 | Revenue               | Positive                                                | Revenue shouldn't be negative.           |
-| Email                 | Mandatory when age is lesser then 60                    | Email should not be empty.               |
+| Email                 | Mandatory                                               | Email should not be empty.               |
 | Email                 | Email format when filled                                | This is an invalid email.                |
 | Hobby                 | Is contained in the HobbyEnumeration                    | Select one of the provided hobbies.      |
 | Hobby                 | Should not be Sports when Profession is Developer       | I doubt it.                              |
@@ -36,6 +36,26 @@ Add the following validations to the POST endpoint
 | Cpf.Number            | Digit validation                                        | Cpf is invalid.                          |
 | Cpf.Emission          | Should be in the past                                   | Emission should be in the past.          |
 | Cpf.Expiration        | Should be in the future                                 | Expiration should be in the future.      |
+
+### Change validations
+
+Add validations:
+
+| Field | Validation | Fail message |
+| ----- | ---------- | ------------ |
+
+
+Update validations:
+
+| Field | Validation                           | Fail message               |
+| ----- | ------------------------------------ | -------------------------- |
+| Email | Mandatory when age is lesser then 60 | Email should not be empty. |
+
+Add validations only for PUT route:
+
+| Field | Validation | Fail message |
+| ----- | ---------- | ------------ |
+
 
 ## Running the application
 

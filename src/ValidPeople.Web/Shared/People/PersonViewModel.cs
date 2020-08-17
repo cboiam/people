@@ -9,7 +9,7 @@ namespace ValidPeople.Web.Shared.People
         public NameViewModel Name { get; set; }
         public string Email { get; set; }
         public DateTime Birth { get; set; }
-        public IEnumerable<ParentViewModel> Parents { get; set; }
+        public List<ParentViewModel> Parents { get; set; }
         public CpfViewModel Cpf { get; set; }
         public EnumerationViewModel Hobby { get; set; }
         public double Revenue { get; set; }

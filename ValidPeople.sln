@@ -15,11 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4E1F634F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidPeople.UnitTests", "tests\ValidPeople.UnitTests\ValidPeople.UnitTests.csproj", "{2C62F395-52D1-4541-B252-9AD1080FC1E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidPeople.Web.Server", "src\ValidPeople.Web\Server\ValidPeople.Web.Server.csproj", "{B1883458-58B4-4B77-8689-A644643446DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidPeople.Web.Server", "src\ValidPeople.Web\Server\ValidPeople.Web.Server.csproj", "{B1883458-58B4-4B77-8689-A644643446DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidPeople.Web.Client", "src\ValidPeople.Web\Client\ValidPeople.Web.Client.csproj", "{4231CBF4-DC52-4478-9796-F25537BA5AEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidPeople.Web.Client", "src\ValidPeople.Web\Client\ValidPeople.Web.Client.csproj", "{4231CBF4-DC52-4478-9796-F25537BA5AEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidPeople.Web.Shared", "src\ValidPeople.Web\Shared\ValidPeople.Web.Shared.csproj", "{5F947563-468E-461B-A457-EB3F258B34D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidPeople.Web.Shared", "src\ValidPeople.Web\Shared\ValidPeople.Web.Shared.csproj", "{5F947563-468E-461B-A457-EB3F258B34D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

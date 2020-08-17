@@ -1,0 +1,31 @@
+﻿@using ValidPeople.Web.Shared
+
+@if (ShowNotification)
+{
+    <div class="notification-panel">
+        <div class="notification-modal card col-md-8 col-md-6">
+            <h4>Error</h4>
+            <hr />
+            @foreach (var error in Errors)
+            {
+                <div class="notification-error card">
+                    <div>Message: @error.Message</div>
+                    <div>Value: @error.Value</div>
+                </div>
+            }
+            <hr />
+            <button class="btn person-controll-button notification-dismiss-button" @onclick="Dismiss">Ok</button>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public bool ShowNotification { get; set; }
+
+    [Parameter]
+    public Action Dismiss { get; set; }
+
+    [Parameter]
+    public IEnumerable<ErrorViewModel> Errors { get; set; }
+}

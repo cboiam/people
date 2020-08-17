@@ -34,7 +34,8 @@
     color: #ffffff;
 }
 
-.person-detail {
+.person-detail, 
+.person-form {
     margin-top: 15px;
 }
 
@@ -42,7 +43,8 @@
     margin-bottom: 10px;
 }
 
-.person-detail-data {
+.person-detail-data, 
+.person-form-data {
     margin-top: 15px;
 }
 
@@ -51,31 +53,44 @@
     font-weight: bold;
 }
 
-.person-detail-tab {
+.person-form-data-label {
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.person-detail-tab,
+.person-form-tab {
     margin-left: 25px;
 }
 
-.person-detail-controll {
+.person-detail-controll,
+.person-form-controll {
     margin-top: 25px;
 }
 
-    .person-detail-controll .btn {
-        color: #000000;
-        border: 2px solid #310b4c;
-        background: #ffffff;
+.person-controll-button {
+    color: #000000;
+    border: 2px solid #310b4c;
+    background: #ffffff;
+    transition: all .4s;
+}
+
+    .person-controll-button:hover {
+        color: #ffffff;
+        background: #310b4c;
+    }
+
+    .person-controll-button .oi {
+        color: #310b4c;
         transition: all .4s;
     }
 
-        .person-detail-controll .btn:hover {
-            color: #ffffff;
-            background: #310b4c;
-        }
+    .person-controll-button:hover .oi {
+        color: #ffffff;
+    }
 
-        .person-detail-controll .btn .oi {
-            color: #310b4c;
-            transition: all .4s;
-        }
-
-        .person-detail-controll .btn:hover .oi {
-            color: #ffffff;
-        }
+.person-form-parents, .person-form-parent-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -21,7 +21,7 @@ namespace ValidPeople.Domain.Enumerations
 
         public override string ToString() => Name;
 
-        protected static IEnumerable<T> GetAll<T>() where T : Enumeration
+        public static IEnumerable<T> GetAll<T>() where T : Enumeration
         {
             var fields = typeof(T).GetFields(BindingFlags.Public |
                                              BindingFlags.Static |

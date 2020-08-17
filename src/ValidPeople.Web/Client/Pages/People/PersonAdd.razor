@@ -1,7 +1,160 @@
 ﻿@page "/people/new"
+@using ValidPeople.Web.Shared
+@using ValidPeople.Web.Shared.People
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
 
 <h3>Add new Person</h3>
 
-@code {
+<div class="container">
+    <div class="row">
+        <EditForm Model="person" OnSubmit="Submit">
+            <div class="person-form">
+                <div class="person-form-data person-form-data-label">Name</div>
+                <div class="person-form-data person-form-tab">
+                    <div>
+                        <label class="person-form-data-label">First Name</label>
+                        <InputText @bind-Value="person.Name.FirstName" class="form-control" />
+                    </div>
+                    <div>
+                        <label class="person-form-data-label">Last Name</label>
+                        <InputText @bind-Value="person.Name.LastName" class="form-control" />
+                    </div>
+                </div>
+                <div>
+                    <label class="person-form-data-label">Birth Date</label>
+                    <InputDate @bind-Value="@person.Birth" class="form-control"></InputDate>
+                </div>
+                <div>
+                    <label class="person-form-data-label">Email</label>
+                    <InputText @bind-Value="person.Email" class="form-control" />
+                </div>
+                <div>
+                    <label class="person-form-data-label">Revenue</label>
+                    <InputNumber @bind-Value="person.Revenue" class="form-control" />
+                </div>
+                <div>
+                    <label class="person-form-data-label">Hobby</label>
+                    <InputSelect @bind-Value="person.Hobby" class="form-control">
+                        @foreach (var hobby in resource.Hobbies)
+                        {
+                            <option value="@hobby.Id">@hobby.Name</option>
+                        }
+                    </InputSelect>
+                </div>
+                <div class="person-form-data person-form-data-label">Cpf</div>
+                <div class="person-form-data person-form-tab">
+                    <div>
+                        <label class="person-form-data-label">Number</label>
+                        <InputText @bind-Value="person.Cpf.Number" class="form-control" />
+                    </div>
+                    <div>
+                        <label class="person-form-data-label">Emission Date</label>
+                        <InputDate @bind-Value="@person.Cpf.Emission" class="form-control"></InputDate>
+                    </div>
+                    <div>
+                        <label class="person-form-data-label">Expiration Date</label>
+                        <InputDate @bind-Value="@person.Cpf.Expiration" class="form-control"></InputDate>
+                    </div>
+                </div>
+                <div class="person-form-data person-form-parents">
+                    <div class="person-form-data-label">Parents</div>
+                    @if (CanAddParents)
+                    {
+                        <button class="btn btn-sm person-controll-button" @onclick="AddParent" type="button">Add parent</button>
+                    }
+                </div>
+                @foreach (var parent in person.Parents)
+                {
+                    <div class="person-form-data person-form-tab">
+                        <div class="person-form-data person-form-parent-name">
+                            <div class="person-form-data-label">Name</div>
+                            <button class="btn btn-sm person-controll-button" type="button" @onclick="() => RemoveParent(parent)"><span class="oi oi-x" aria-hidden="true"></span></button>
+                        </div>
+                        <div class="person-form-data person-form-tab">
+                            <div>
+                                <label class="person-form-data-label">First Name</label>
+                                <InputText @bind-Value="parent.Name.FirstName" class="form-control" />
+                            </div>
+                            <div>
+                                <label class="person-form-data-label">Last Name</label>
+                                <InputText @bind-Value="parent.Name.LastName" class="form-control" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="person-form-data-label">Relation</label>
+                            <InputSelect @bind-Value="parent.Relation" class="form-control">
+                                @foreach (var relation in resource.ParentRelations)
+                                    {
+                                    <option value="@relation.Id">@relation.Name</option>
+                                    }
+                            </InputSelect>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="person-form-controll">
+                <button class="btn person-controll-button" type="submit">Submit</button>
+                <button class="btn person-controll-button" type="reset">Reset</button>
+            </div>
+        </EditForm>
+    </div>
+</div>
 
+<Notification Errors="errors" ShowNotification="showNotification" Dismiss="HideNotification" />
+
+@code {
+    private bool showNotification;
+    private IEnumerable<ErrorViewModel> errors;
+    private bool CanAddParents => person.Parents.Count < 2;
+
+    private Resource resource = new Resource
+    {
+        Hobbies = new List<EnumerationViewModel>(),
+        ParentRelations = new List<EnumerationViewModel>()
+    };
+    private PersonViewModel person = new PersonViewModel
+    {
+        Name = new NameViewModel(),
+        Cpf = new CpfViewModel(),
+        Parents = new List<ParentViewModel>
+        {
+            new ParentViewModel()
+        }
+    };
+
+    private async Task Submit()
+    {
+        var response = await Http.PostAsJsonAsync("/api/people", person);
+
+        if (response.IsSuccessStatusCode)
+        {
+            NavigationManager.NavigateTo("/people");
+            return;
+        }
+
+        var errors = await response.Content.ReadFromJsonAsync<IEnumerable<ErrorViewModel>>();
+        ShowNotification();
+    }
+
+    private void ShowNotification() => showNotification = true;
+    private void HideNotification() => showNotification = false;
+
+    private void AddParent()
+    {
+        person.Parents.Add(new ParentViewModel
+        {
+            Name = new NameViewModel()
+        });
+    }
+
+    private void RemoveParent(ParentViewModel parent)
+    {
+        person.Parents.Remove(parent);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        resource = await Http.GetFromJsonAsync<Resource>("/api/resources");
+    }
 }

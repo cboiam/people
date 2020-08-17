@@ -1,0 +1,26 @@
+﻿.notification-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(177, 177, 177, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-modal {
+    background: #ffffff;
+    padding: 20px;
+    max-width: 60vw;
+    max-height: 50vh;
+}
+
+.notification-error {
+    padding: 10px;
+}
+
+.notification-dismiss-button {
+    max-width: 50px;
+}

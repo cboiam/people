@@ -8,26 +8,21 @@ using ValidPeople.Domain.Entities;
 
 namespace ValidPeople.Application.UseCases
 {
-    public class PostPersonUseCase : IPostPersonUseCase
+    public class AddPersonUseCase : IAddPersonUseCase
     {
         private readonly IPersonRepository personRepository;
         private readonly IMapper mapper;
 
-        public PostPersonUseCase(IPersonRepository personRepository, IMapper mapper)
+        public AddPersonUseCase(IPersonRepository personRepository, IMapper mapper)
         {
             this.personRepository = personRepository;
             this.mapper = mapper;
         }
 
-        public async Task<Guid?> Execute(PersonRequest person)
+        public async Task<Guid> Execute(PersonAddRequest person)
         {
-            if(person == null)
-            {
-                return null;
-            }
-
             var entity = mapper.Map<Person>(person);
-            await personRepository.Post(entity);
+            await personRepository.Add(entity);
         
             return entity.Id;
         }

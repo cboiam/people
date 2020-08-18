@@ -9,7 +9,7 @@ namespace ValidPeople.Application.Mappings
     {
         public RequestToEntityProfile()
         {
-            CreateMap<PersonRequest, Person>().ConvertUsing((src, dest, ctx) => new Person(
+            CreateMap<PersonAddRequest, Person>().ConvertUsing((src, dest, ctx) => new Person(
                 ctx.Mapper.Map<Name>(src.Name),
                 src.Email,
                 src.Birth,
@@ -18,15 +18,29 @@ namespace ValidPeople.Application.Mappings
                 src.Hobby,
                 src.Revenue
             ));
+
+            CreateMap<PersonUpdateRequest, Person>().ConvertUsing((src, dest, ctx) => new Person(
+                src.Id,
+                ctx.Mapper.Map<Name>(src.Name),
+                src.Email,
+                src.Birth,
+                ctx.Mapper.Map<IEnumerable<Parent>>(src.Parents),
+                ctx.Mapper.Map<Cpf>(src.Cpf),
+                src.Hobby,
+                src.Revenue
+            ));
+
             CreateMap<NameRequest, Name>().ConvertUsing((src) => new Name(
                 src.FirstName,
                 src.LastName
             ));
+            
             CreateMap<CpfRequest, Cpf>().ConstructUsing((src) => new Cpf(
                 src.Number,
                 src.Expiration,
                 src.Emission
             ));
+            
             CreateMap<ParentRequest, Parent>().ConvertUsing((src, dest, ctx) => new Parent(
                 ctx.Mapper.Map<Name>(src.Name),
                 src.Relation

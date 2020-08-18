@@ -52,14 +52,31 @@ namespace ValidPeople.Infra.Repositories
             }
 
             var result = await document.Reference.DeleteAsync();
-            
+
             return result != null;
         }
 
-        public async Task Post(Person person)
+        public async Task Add(Person person)
         {
             var model = mapper.Map<Models.Person>(person);
-            var data = await Collection.AddAsync(model);
+            await Collection.AddAsync(model);
+        }
+
+        public async Task<bool> Update(Person person)
+        {
+            var model = mapper.Map<Models.Person>(person);
+
+            var data = (await Collection.WhereEqualTo("Id", person.Id.ToString())
+                .GetSnapshotAsync())
+                    .FirstOrDefault();
+
+            if (data != null && data.Exists)
+            {
+                await data.Reference.SetAsync(model);
+                return true;
+            }
+
+            return false;
         }
     }
 }

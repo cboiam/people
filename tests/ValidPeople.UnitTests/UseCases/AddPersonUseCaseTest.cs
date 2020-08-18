@@ -12,37 +12,25 @@ using System;
 
 namespace ValidPeople.UnitTests.UseCases
 {
-    public class PostPersonUseCaseTest
+    public class AddPersonUseCaseTest
     {
         private readonly Mock<IPersonRepository> personRepository;
-        private readonly PostPersonUseCase instance;
+        private readonly AddPersonUseCase instance;
 
-        public PostPersonUseCaseTest()
+        public AddPersonUseCaseTest()
         {
             personRepository = new Mock<IPersonRepository>();
-            instance = new PostPersonUseCase(personRepository.Object, MapperConfiguration.instance);
+            instance = new AddPersonUseCase(personRepository.Object, MapperConfiguration.instance);
         }
 
         [Fact]
         public async Task Execute_InsertPerson()
         {
-            var person = PersonFaker.Get().Generate().MapToRequest();
+            var person = PersonFaker.Get().Generate().MapToAddRequest();
             
             var result = await instance.Execute(person);
 
             result.Should().NotBe(Guid.Empty);
-        }
-
-        [Fact]
-        public async Task Execute_InsertPersonFail()
-        {
-            var person = null as Person;
-            var entity = null as PersonRequest;
-
-            personRepository.Setup(x => x.Post(person));
-            var result = await instance.Execute(entity);
-
-            result.Should().Be(null);
         }
     }
 }

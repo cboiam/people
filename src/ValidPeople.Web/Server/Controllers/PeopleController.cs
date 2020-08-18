@@ -17,19 +17,22 @@ namespace ValidPeople.Web.Server.Controllers
         private readonly IGetPeopleUseCase getPeopleUseCase;
         private readonly IGetPersonUseCase getPersonUseCase;
         private readonly IDeletePersonUseCase deletePersonUseCase;
-        private readonly IPostPersonUseCase postPersonUseCase;
+        private readonly IAddPersonUseCase addPersonUseCase;
+        private readonly IUpdatePersonUseCase updatePersonUseCase;
         private readonly IMapper mapper;
 
         public PeopleController(IGetPeopleUseCase getPeopleUseCase, 
             IGetPersonUseCase getPersonUseCase, 
             IDeletePersonUseCase deletePersonUseCase,
-            IPostPersonUseCase postPersonUseCase,
+            IAddPersonUseCase addPersonUseCase,
+            IUpdatePersonUseCase updatePersonUseCase,
             IMapper mapper)
         {
             this.getPeopleUseCase = getPeopleUseCase;
             this.getPersonUseCase = getPersonUseCase;
             this.deletePersonUseCase = deletePersonUseCase;
-            this.postPersonUseCase = postPersonUseCase;
+            this.addPersonUseCase = addPersonUseCase;
+            this.updatePersonUseCase = updatePersonUseCase;
             this.mapper = mapper;
         }
 
@@ -76,11 +79,29 @@ namespace ValidPeople.Web.Server.Controllers
 
         [HttpPost]
         [Produces("application/json")]
-        [ProducesResponseType(typeof(PersonViewModel), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
         public async Task<ActionResult<Guid>> Post(PersonViewModel person)
         {
-            var result = await postPersonUseCase.Execute(mapper.Map<PersonRequest>(person));
+            var result = await addPersonUseCase.Execute(mapper.Map<PersonAddRequest>(person));
             return Created($"/api/people/{result}", result);
+        }
+
+
+        [HttpPut("{id}")]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Guid>> Update(Guid id, PersonViewModel person)
+        {
+            person.Id = id;
+            var result = await updatePersonUseCase.Execute(mapper.Map<PersonUpdateRequest>(person));
+
+            if(!result)
+            {
+                return NotFound();
+            }
+
+            return Ok(person.Id);
         }
     }
 }

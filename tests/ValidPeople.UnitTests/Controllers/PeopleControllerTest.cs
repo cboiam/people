@@ -4,6 +4,7 @@ using Moq;
 using System;
 using System.Threading.Tasks;
 using ValidPeople.Application.Interfaces.UseCases;
+using ValidPeople.Application.Requests.People;
 using ValidPeople.UnitTests.Fakers.Entities;
 using ValidPeople.UnitTests.Mappings;
 using ValidPeople.Web.Server.Controllers;
@@ -16,7 +17,8 @@ namespace ValidPeople.UnitTests.Controllers
         private readonly Mock<IGetPeopleUseCase> getPeopleUseCase;
         private readonly Mock<IGetPersonUseCase> getPersonUseCase;
         private readonly Mock<IDeletePersonUseCase> deletePersonUseCase;
-        private readonly Mock<IPostPersonUseCase> postPersonUseCase;
+        private readonly Mock<IAddPersonUseCase> postPersonUseCase;
+        private readonly Mock<IUpdatePersonUseCase> updatePersonUseCase;
         private readonly PeopleController instance;
 
         public PeopleControllerTest()
@@ -24,8 +26,9 @@ namespace ValidPeople.UnitTests.Controllers
             getPeopleUseCase = new Mock<IGetPeopleUseCase>();
             getPersonUseCase = new Mock<IGetPersonUseCase>();
             deletePersonUseCase = new Mock<IDeletePersonUseCase>();
-            postPersonUseCase = new Mock<IPostPersonUseCase>();
-            instance = new PeopleController(getPeopleUseCase.Object, getPersonUseCase.Object, deletePersonUseCase.Object, postPersonUseCase.Object, MapperConfiguration.instance);
+            postPersonUseCase = new Mock<IAddPersonUseCase>();
+            updatePersonUseCase = new Mock<IUpdatePersonUseCase>();
+            instance = new PeopleController(getPeopleUseCase.Object, getPersonUseCase.Object, deletePersonUseCase.Object, postPersonUseCase.Object, updatePersonUseCase.Object, MapperConfiguration.instance);
         }
 
         [Fact]
@@ -84,6 +87,33 @@ namespace ValidPeople.UnitTests.Controllers
 
             var response = await instance.Delete(id);
             response.Should().BeOfType<NotFoundResult>();
+        }
+
+        [Fact]
+        public async Task Update_ReturnsId_WhenUpdatedSuccessfully()
+        {
+            var id = Guid.NewGuid();
+            var person = PersonFaker.Get().Generate().MapToViewModel();
+            updatePersonUseCase.Setup(x => x.Execute(It.IsAny<PersonUpdateRequest>()))
+                .ReturnsAsync(true);
+
+            var response = await instance.Update(id, person);
+
+            response.Result.Should().BeOfType<OkObjectResult>()
+                .Which.Value.Should().Be(id);
+        }
+
+        [Fact]
+        public async Task Update_ReturnsNotFound_WhenUpdateFailed()
+        {
+            var id = Guid.NewGuid();
+            var person = PersonFaker.Get().Generate().MapToViewModel();
+            updatePersonUseCase.Setup(x => x.Execute(It.IsAny<PersonUpdateRequest>()))
+                .ReturnsAsync(false);
+
+            var response = await instance.Update(id, person);
+
+            response.Result.Should().BeOfType<NotFoundResult>();
         }
     }
 }

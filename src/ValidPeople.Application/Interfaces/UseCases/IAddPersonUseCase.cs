@@ -4,8 +4,8 @@ using ValidPeople.Application.Requests.People;
 
 namespace ValidPeople.Application.Interfaces.UseCases
 {
-    public interface IPostPersonUseCase
+    public interface IAddPersonUseCase
     {
-        Task<Guid?> Execute(PersonRequest person);
+        Task<Guid> Execute(PersonAddRequest person);
     }
 }

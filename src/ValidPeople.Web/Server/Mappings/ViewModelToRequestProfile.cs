@@ -10,7 +10,8 @@ namespace ValidPeople.Web.Server.Mappings
     {
         public ViewModelToRequestProfile()
         {
-            CreateMap<PersonViewModel, PersonRequest>();
+            CreateMap<PersonViewModel, PersonAddRequest>();
+            CreateMap<PersonViewModel, PersonUpdateRequest>();
             CreateMap<NameViewModel, NameRequest>();
             CreateMap<CpfViewModel, CpfRequest>();
             CreateMap<ParentViewModel, ParentRequest>();

@@ -4,7 +4,7 @@ using ValidPeople.Domain.Enumerations;
 
 namespace ValidPeople.Application.Requests.People
 {
-    public class PersonRequest
+    public class PersonAddRequest
     {
         public NameRequest Name { get; set; }
         public string Email { get; set; }

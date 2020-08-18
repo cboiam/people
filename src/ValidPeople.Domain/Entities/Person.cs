@@ -26,5 +26,17 @@ namespace ValidPeople.Domain.Entities
             Hobby = hobby;
             Revenue = revenue;
         }
+
+        public Person(Name name, string email, DateTime birth, IEnumerable<Parent> parents, Cpf cpf, HobbyEnumeration hobby, double revenue)
+        {
+            Id = Guid.NewGuid();
+            Name = name;
+            Email = email;
+            Birth = birth;
+            Parents = parents;
+            Cpf = cpf;
+            Hobby = hobby;
+            Revenue = revenue;
+        }
     }
 }

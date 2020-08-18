@@ -21,7 +21,8 @@ namespace ValidPeople.Web.Server.Configurations
         {
             return services.AddScoped<IGetPeopleUseCase, GetPeopleUseCase>()
                 .AddScoped<IGetPersonUseCase, GetPersonUseCase>()
-                .AddScoped<IDeletePersonUseCase, DeletePersonUseCase>();
+                .AddScoped<IDeletePersonUseCase, DeletePersonUseCase>()
+                .AddScoped<IPostPersonUseCase, PostPersonUseCase>();
         }
 
         public static IServiceCollection RegisterRepositories(this IServiceCollection services, IConfiguration configuration)

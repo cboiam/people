@@ -11,6 +11,9 @@ namespace ValidPeople.UnitTests.Mappings
             config.AddProfile<EntityToResponseProfile>();
             config.AddProfile<ModelToEntityProfile>();
             config.AddProfile<ResponseToViewModelMappings>();
+            config.AddProfile<ViewModelToRequestProfile>();
+            config.AddProfile<RequestToEntityProfile>();
+            config.AddProfile<EntityToModelProfile>();
         }).CreateMapper();
     }
 }

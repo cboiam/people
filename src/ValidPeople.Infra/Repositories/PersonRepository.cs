@@ -55,5 +55,11 @@ namespace ValidPeople.Infra.Repositories
             
             return result != null;
         }
+
+        public async Task Post(Person person)
+        {
+            var model = mapper.Map<Models.Person>(person);
+            var data = await Collection.AddAsync(model);
+        }
     }
 }

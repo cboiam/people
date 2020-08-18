@@ -16,6 +16,7 @@ namespace ValidPeople.UnitTests.Controllers
         private readonly Mock<IGetPeopleUseCase> getPeopleUseCase;
         private readonly Mock<IGetPersonUseCase> getPersonUseCase;
         private readonly Mock<IDeletePersonUseCase> deletePersonUseCase;
+        private readonly Mock<IPostPersonUseCase> postPersonUseCase;
         private readonly PeopleController instance;
 
         public PeopleControllerTest()
@@ -23,7 +24,8 @@ namespace ValidPeople.UnitTests.Controllers
             getPeopleUseCase = new Mock<IGetPeopleUseCase>();
             getPersonUseCase = new Mock<IGetPersonUseCase>();
             deletePersonUseCase = new Mock<IDeletePersonUseCase>();
-            instance = new PeopleController(getPeopleUseCase.Object, getPersonUseCase.Object, deletePersonUseCase.Object, MapperConfiguration.instance);
+            postPersonUseCase = new Mock<IPostPersonUseCase>();
+            instance = new PeopleController(getPeopleUseCase.Object, getPersonUseCase.Object, deletePersonUseCase.Object, postPersonUseCase.Object, MapperConfiguration.instance);
         }
 
         [Fact]

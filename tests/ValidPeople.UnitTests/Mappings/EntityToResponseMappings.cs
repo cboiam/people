@@ -2,7 +2,6 @@
 using System.Linq;
 using ValidPeople.Application.Responses.People;
 using ValidPeople.Domain.Entities;
-using ValidPeople.Domain.Enumerations;
 using ValidPeople.Web.Shared;
 using ValidPeople.Web.Shared.People;
 
@@ -96,7 +95,7 @@ namespace ValidPeople.UnitTests.Mappings
                         Id = parent.Relation.Id,
                         Name = parent.Relation.Name
                     }
-                }),
+                }).ToList(),
                 Hobby = new EnumerationViewModel
                 {
                     Id = person.Hobby.Id,

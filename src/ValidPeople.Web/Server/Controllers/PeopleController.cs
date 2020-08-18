@@ -6,6 +6,7 @@ using ValidPeople.Application.Interfaces.UseCases;
 using AutoMapper;
 using ValidPeople.Web.Shared.People;
 using Microsoft.AspNetCore.Http;
+using ValidPeople.Application.Requests.People;
 
 namespace ValidPeople.Web.Server.Controllers
 {
@@ -16,16 +17,19 @@ namespace ValidPeople.Web.Server.Controllers
         private readonly IGetPeopleUseCase getPeopleUseCase;
         private readonly IGetPersonUseCase getPersonUseCase;
         private readonly IDeletePersonUseCase deletePersonUseCase;
+        private readonly IPostPersonUseCase postPersonUseCase;
         private readonly IMapper mapper;
 
         public PeopleController(IGetPeopleUseCase getPeopleUseCase, 
             IGetPersonUseCase getPersonUseCase, 
             IDeletePersonUseCase deletePersonUseCase,
+            IPostPersonUseCase postPersonUseCase,
             IMapper mapper)
         {
             this.getPeopleUseCase = getPeopleUseCase;
             this.getPersonUseCase = getPersonUseCase;
             this.deletePersonUseCase = deletePersonUseCase;
+            this.postPersonUseCase = postPersonUseCase;
             this.mapper = mapper;
         }
 
@@ -68,6 +72,15 @@ namespace ValidPeople.Web.Server.Controllers
                 return NoContent();
             }
             return NotFound();
+        }
+
+        [HttpPost]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(PersonViewModel), StatusCodes.Status201Created)]
+        public async Task<ActionResult<Guid>> Post(PersonViewModel person)
+        {
+            var result = await postPersonUseCase.Execute(mapper.Map<PersonRequest>(person));
+            return Created($"/api/people/{result}", result);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Google.Cloud.Firestore;
-using System;
 using System.Collections.Generic;
 
 namespace ValidPeople.Infra.Models
@@ -17,7 +16,7 @@ namespace ValidPeople.Infra.Models
         public string Email { get; set; }
 
         [FirestoreProperty]
-        public DateTime Birth { get; set; }
+        public Timestamp Birth { get; set; }
 
         [FirestoreProperty]
         public IEnumerable<Parent> Parents { get; set; }

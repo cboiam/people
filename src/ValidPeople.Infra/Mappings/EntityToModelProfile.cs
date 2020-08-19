@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
+using Google.Cloud.Firestore;
 using System;
-using System.Collections.Generic;
 using ValidPeople.Domain.Entities;
-using ValidPeople.Domain.Enumerations;
 
 namespace ValidPeople.Infra.Mappings
 {
@@ -16,6 +15,9 @@ namespace ValidPeople.Infra.Mappings
             CreateMap<Parent, Models.Parent>()
                 .ForMember(dest => dest.Relation, opt => opt.MapFrom(src => src.Relation.Id));
             CreateMap<Cpf, Models.Cpf>();
+
+            CreateMap<DateTime, Timestamp>()
+                .ConvertUsing(src => Timestamp.FromDateTime(src.ToUniversalTime()));
         }
     }
 }

@@ -10,9 +10,9 @@ namespace ValidPeople.Infra.Models
         public string Number { get; set; }
 
         [FirestoreProperty]
-        public DateTime Expiration { get; set; }
+        public Timestamp Expiration { get; set; }
 
         [FirestoreProperty]
-        public DateTime Emission { get; set; }
+        public Timestamp Emission { get; set; }
     }
 }

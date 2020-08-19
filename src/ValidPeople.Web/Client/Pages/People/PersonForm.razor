@@ -31,7 +31,7 @@
                 </div>
                 <div>
                     <label class="person-form-data-label">Hobby</label>
-                    <select @onchange="e => Select(e, Person.Hobby, resource.Hobbies)" class="form-control">
+                    <select @onchange="e => Person.Hobby = Select(e, resource.Hobbies)" class="form-control">
                         @foreach (var hobby in resource.Hobbies)
                         {
                             <option value="@hobby.Id" selected="@(hobby.Id == Person.Hobby?.Id)">@hobby.Name</option>
@@ -79,7 +79,7 @@
                         </div>
                         <div>
                             <label class="person-form-data-label">Relation</label>
-                            <select @onchange="e => Select(e, parent.Relation, resource.ParentRelations)" class="form-control">
+                            <select @onchange="e => parent.Relation = Select(e, resource.ParentRelations)" class="form-control">
                                 @foreach (var relation in resource.ParentRelations)
                                 {
                                     <option value="@relation.Id" selected="@(relation.Id == parent.Relation?.Id)">@relation.Name</option>
@@ -136,15 +136,10 @@
         Person.Parents.Remove(parent);
     }
 
-    private void Select(ChangeEventArgs evt, EnumerationViewModel enumeration, IEnumerable<EnumerationViewModel> values)
+    private EnumerationViewModel Select(ChangeEventArgs evt, IEnumerable<EnumerationViewModel> values)
     {
         var value = evt.Value.ToString();
-        var enumerationValue = values.First(h => h.Id == int.Parse(value));
-
-        enumeration ??= new EnumerationViewModel();
-
-        enumeration.Id = enumerationValue.Id;
-        enumeration.Name = enumerationValue.Name;
+        return values.First(h => h.Id == int.Parse(value));
     }
 
     protected override async Task OnInitializedAsync()

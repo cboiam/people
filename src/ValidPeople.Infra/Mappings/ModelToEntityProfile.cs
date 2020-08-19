@@ -14,7 +14,7 @@ namespace ValidPeople.Infra.Mappings
                 .ConvertUsing((src, dest, ctx) => new Person(Guid.Parse(src.Id),
                     ctx.Mapper.Map<Name>(src.Name),
                     src.Email,
-                    src.Birth,
+                    src.Birth.ToDateTime(),
                     ctx.Mapper.Map<IEnumerable<Parent>>(src.Parents),
                     ctx.Mapper.Map<Cpf>(src.Cpf),
                     Enumeration.FromValue<HobbyEnumeration>(src.Hobby),
@@ -28,7 +28,7 @@ namespace ValidPeople.Infra.Mappings
                     Enumeration.FromValue<RelationEnumeration>(src.Relation)));
 
             CreateMap<Models.Cpf, Cpf>()
-                .ConvertUsing(src => new Cpf(src.Number, src.Expiration, src.Emission));
+                .ConvertUsing(src => new Cpf(src.Number, src.Expiration.ToDateTime(), src.Emission.ToDateTime()));
         }
     }
 }

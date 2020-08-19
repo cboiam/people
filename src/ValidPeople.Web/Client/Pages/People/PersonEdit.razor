@@ -20,7 +20,8 @@ else
     <PersonForm Person="person"
                 Errors="errors"
                 ShowNotification="showNotification"
-                Submit="Submit" />
+                Submit="Submit"
+                Reset="Reset"/>
 }
 
 @code {
@@ -31,6 +32,11 @@ else
     private bool showNotification;
     private IEnumerable<ErrorViewModel> errors;
     private PersonViewModel person;
+
+    private void Reset()
+    {
+        NavigationManager.NavigateTo("/people/" + Id);
+    }
 
     private async Task Submit()
     {

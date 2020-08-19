@@ -9,23 +9,34 @@
 <PersonForm Person="person"
             Errors="errors"
             ShowNotification="showNotification"
-            Submit="Submit" />
+            Submit="Submit"
+            Reset="Reset" />
 
 @code {
     private bool showNotification;
     private IEnumerable<ErrorViewModel> errors;
-    private PersonViewModel person = new PersonViewModel
+    private PersonViewModel person = CreatePerson();
+
+    private static PersonViewModel CreatePerson()
     {
-        Name = new NameViewModel(),
-        Cpf = new CpfViewModel(),
-        Parents = new List<ParentViewModel>
+        return new PersonViewModel
         {
-            new ParentViewModel
+            Name = new NameViewModel(),
+            Cpf = new CpfViewModel(),
+            Parents = new List<ParentViewModel>
             {
-                Name = new NameViewModel()
+                new ParentViewModel
+                {
+                    Name = new NameViewModel()
+                }
             }
-        }
-    };
+        };
+    }
+
+    private void Reset()
+    {
+        person = CreatePerson();
+    }
 
     private async Task Submit()
     {

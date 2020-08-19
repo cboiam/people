@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <EditForm Model="Person" OnSubmit="Submit">
+        <EditForm Model="Person" OnSubmit="Submit" @onreset="Reset">
             <div class="person-form">
                 <div class="person-form-data person-form-data-label">Name</div>
                 <div class="person-form-data person-form-tab">
@@ -31,12 +31,12 @@
                 </div>
                 <div>
                     <label class="person-form-data-label">Hobby</label>
-                    <InputSelect @bind-Value="Person.Hobby" class="form-control">
+                    <select @onchange="e => Select(e, Person.Hobby, resource.Hobbies)" class="form-control">
                         @foreach (var hobby in resource.Hobbies)
                         {
                             <option value="@hobby.Id" selected="@(hobby.Id == Person.Hobby?.Id)">@hobby.Name</option>
                         }
-                    </InputSelect>
+                    </select>
                 </div>
                 <div class="person-form-data person-form-data-label">Cpf</div>
                 <div class="person-form-data person-form-tab">
@@ -79,12 +79,12 @@
                         </div>
                         <div>
                             <label class="person-form-data-label">Relation</label>
-                            <InputSelect @bind-Value="parent.Relation" class="form-control">
+                            <select @onchange="e => Select(e, parent.Relation, resource.ParentRelations)" class="form-control">
                                 @foreach (var relation in resource.ParentRelations)
-                                    {
+                                {
                                     <option value="@relation.Id" selected="@(relation.Id == parent.Relation?.Id)">@relation.Name</option>
-                                    }
-                            </InputSelect>
+                                }
+                            </select>
                         </div>
                     </div>
                 }
@@ -112,6 +112,9 @@
     [Parameter]
     public Func<Task> Submit { get; set; }
 
+    [Parameter]
+    public Action Reset { get; set; }
+
     private bool CanAddParents => Person.Parents.Count < 2;
     private void HideNotification() => ShowNotification = false;
     private Resource resource = new Resource
@@ -131,6 +134,17 @@
     private void RemoveParent(ParentViewModel parent)
     {
         Person.Parents.Remove(parent);
+    }
+
+    private void Select(ChangeEventArgs evt, EnumerationViewModel enumeration, IEnumerable<EnumerationViewModel> values)
+    {
+        var value = evt.Value.ToString();
+        var enumerationValue = values.First(h => h.Id == int.Parse(value));
+
+        enumeration ??= new EnumerationViewModel();
+
+        enumeration.Id = enumerationValue.Id;
+        enumeration.Name = enumerationValue.Name;
     }
 
     protected override async Task OnInitializedAsync()

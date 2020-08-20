@@ -13,5 +13,9 @@ namespace ValidPeople.Web.Shared.People
         public CpfViewModel Cpf { get; set; }
         public EnumerationViewModel Hobby { get; set; }
         public double Revenue { get; set; }
+        public string Profession { get; set; }
+        public EnumerationViewModel EducationalLevel { get; set; }
+        public EnumerationViewModel Status { get; set; }
+        public bool Cloned { get; set; }
     }
 }

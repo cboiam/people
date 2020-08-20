@@ -18,7 +18,11 @@ namespace ValidPeople.Infra.Mappings
                     ctx.Mapper.Map<IEnumerable<Parent>>(src.Parents),
                     ctx.Mapper.Map<Cpf>(src.Cpf),
                     Enumeration.FromValue<HobbyEnumeration>(src.Hobby),
-                    src.Revenue));
+                    src.Revenue,
+                    src.Profession,
+                    Enumeration.FromValue<EducationalLevelEnumeration>(src.EducationalLevel),
+                    Enumeration.FromValue<StatusEnumeration>(src.Status),
+                    src.Cloned));
 
             CreateMap<Models.Name, Name>()
                 .ConvertUsing(src => new Name(src.FirstName, src.LastName));

@@ -35,7 +35,11 @@ namespace ValidPeople.UnitTests.Mappings
                     Relation = parent.Relation
                 }),
                 Hobby = person.Hobby,
-                Revenue = person.Revenue
+                Revenue = person.Revenue,
+                Profession = person.Profession,
+                EducationalLevel = person.EducationalLevel,
+                Status = person.Status,
+                Cloned = person.Cloned
             };
         }
 
@@ -67,7 +71,11 @@ namespace ValidPeople.UnitTests.Mappings
                     Relation = parent.Relation
                 }),
                 Hobby = person.Hobby,
-                Revenue = person.Revenue
+                Revenue = person.Revenue,
+                Profession = person.Profession,
+                EducationalLevel = person.EducationalLevel,
+                Status = person.Status,
+                Cloned = person.Cloned
             };
         }
     }

@@ -19,6 +19,10 @@ namespace ValidPeople.Web.Server.Mappings
                 .ConvertUsing((src) => Enumeration.FromValue<HobbyEnumeration>(src.Id));
             CreateMap<EnumerationViewModel, RelationEnumeration>()
                 .ConvertUsing((src) => Enumeration.FromValue<RelationEnumeration>(src.Id));
+            CreateMap<EnumerationViewModel, EducationalLevelEnumeration>()
+                .ConvertUsing((src) => Enumeration.FromValue<EducationalLevelEnumeration>(src.Id));
+            CreateMap<EnumerationViewModel, StatusEnumeration>()
+                .ConvertUsing((src) => Enumeration.FromValue<StatusEnumeration>(src.Id));
         }
     }
 }

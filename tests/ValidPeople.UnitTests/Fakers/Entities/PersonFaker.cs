@@ -16,7 +16,11 @@ namespace ValidPeople.UnitTests.Fakers.Entities
                 ParentFaker.Get().Generate(2),
                 new Cpf(f.Person.Cpf(), f.Date.Future(), f.Date.Past()),
                 f.PickRandom(HobbyEnumeration.GetAll()),
-                f.Random.Double()));
+                f.Random.Double(),
+                f.Name.JobTitle(),
+                f.PickRandom(EducationalLevelEnumeration.GetAll()),
+                f.PickRandom(StatusEnumeration.GetAll()),
+                f.Random.Bool()));
         }
     }
 }

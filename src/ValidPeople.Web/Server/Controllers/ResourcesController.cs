@@ -22,7 +22,9 @@ namespace ValidPeople.Web.Server.Controllers
             new Resource
             {
                 Hobbies = GetEnumerationResource<HobbyEnumeration>(),
-                ParentRelations = GetEnumerationResource<RelationEnumeration>()
+                ParentRelations = GetEnumerationResource<RelationEnumeration>(),
+                EducationalLevels = GetEnumerationResource<EducationalLevelEnumeration>(),
+                Status = GetEnumerationResource<StatusEnumeration>()
             };
 
         private IEnumerable<EnumerationViewModel> GetEnumerationResource<T>()

@@ -29,5 +29,17 @@ namespace ValidPeople.Infra.Models
 
         [FirestoreProperty]
         public double Revenue { get; set; }
+
+        [FirestoreProperty]
+        public string Profession { get; set; }
+
+        [FirestoreProperty]
+        public int EducationalLevel { get; set; }
+
+        [FirestoreProperty]
+        public int Status { get; set; }
+
+        [FirestoreProperty]
+        public bool Cloned { get; set;}
     }
 }

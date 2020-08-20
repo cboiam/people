@@ -49,7 +49,11 @@ namespace ValidPeople.UnitTests.Mappings
                     Relation = parent.Relation
                 }),
                 Hobby = person.Hobby,
-                Revenue = person.Revenue
+                Revenue = person.Revenue,
+                Profession = person.Profession,
+                EducationalLevel = person.EducationalLevel,
+                Status = person.Status,
+                Cloned = person.Cloned
             };
         }
 
@@ -101,7 +105,17 @@ namespace ValidPeople.UnitTests.Mappings
                     Id = person.Hobby.Id,
                     Name = person.Hobby.Name
                 },
-                Revenue = person.Revenue
+                Revenue = person.Revenue,
+                Profession = person.Profession,
+                EducationalLevel = new EnumerationViewModel{
+                    Id = person.EducationalLevel.Id,
+                    Name = person.EducationalLevel.Name
+                },
+                Status = new EnumerationViewModel{
+                    Id = person.Status.Id,
+                    Name = person.Status.Name
+                },
+                Cloned = person.Cloned
             };
         }
     }

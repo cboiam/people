@@ -16,7 +16,11 @@ namespace ValidPeople.Application.Mappings
                 ctx.Mapper.Map<IEnumerable<Parent>>(src.Parents),
                 ctx.Mapper.Map<Cpf>(src.Cpf),
                 src.Hobby,
-                src.Revenue
+                src.Revenue,
+                src.Profession,
+                src.EducationalLevel,
+                src.Status,
+                src.Cloned
             ));
 
             CreateMap<PersonUpdateRequest, Person>().ConvertUsing((src, dest, ctx) => new Person(
@@ -27,7 +31,11 @@ namespace ValidPeople.Application.Mappings
                 ctx.Mapper.Map<IEnumerable<Parent>>(src.Parents),
                 ctx.Mapper.Map<Cpf>(src.Cpf),
                 src.Hobby,
-                src.Revenue
+                src.Revenue,
+                src.Profession,
+                src.EducationalLevel,
+                src.Status,
+                src.Cloned
             ));
 
             CreateMap<NameRequest, Name>().ConvertUsing((src) => new Name(

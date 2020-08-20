@@ -33,18 +33,17 @@ Add the following validations to the POST endpoint
 | Cpf.Number            | Digit validation                                        | Cpf is invalid.                                |
 | Cpf.Emission          | Should be in the past                                   | Emission should be in the past.                |
 | Cpf.Expiration        | Should be in the future                                 | Expiration should be in the future.            |
-| EducationalLevel      | Is contained in the EducationalLevelEnumeration         | Select one of the provided educational levels. |
 
 ### Change validations
 
 Add validations to both endpoints:
 
-| Field            | Validation                                       | Fail message                |
-| ---------------- | ------------------------------------------------ | --------------------------- |
-| Parent           | Should have at least one                         | You need a parent.          |
-| Parent           | Should have a maximum of two                     | Too much parents.           |
-| Parent           | If cloned then need to have no parents           | Clones don't have parents.  |
-| EducationalLevel | Is contained in the EducationalLevelEnumeration  | Can't regress any level.    |
+| Field            | Validation                                       | Fail message                                      |
+| ---------------- | ------------------------------------------------ | ------------------------------------------------- |
+| Parent           | Should have at least one                         | You need a parent.                                |
+| Parent           | Should have a maximum of two                     | Too much parents.                                 |
+| Parent           | If cloned then need to have no parents           | Clones don't have parents.                        |
+| EducationalLevel | Is contained in the EducationalLevelEnumeration  | Select one of the provided educational levels.    |
 
 
 Update validations:

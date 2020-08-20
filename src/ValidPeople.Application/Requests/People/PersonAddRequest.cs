@@ -15,7 +15,6 @@ namespace ValidPeople.Application.Requests.People
         public double Revenue { get; set; }
         public string Profession { get; set; }
         public EducationalLevelEnumeration EducationalLevel { get; set; }
-        public StatusEnumeration Status { get; set; }
         public bool Cloned { get; set;}
     }
 }

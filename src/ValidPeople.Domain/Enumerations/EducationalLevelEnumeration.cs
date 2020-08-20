@@ -9,6 +9,7 @@ namespace ValidPeople.Domain.Enumerations
         public EducationalLevelEnumeration(int id, string name) 
             : base(id, name) { }
 
+        public static EducationalLevelEnumeration None = new EducationalLevelEnumeration(0, "None");
         public static EducationalLevelEnumeration PrimaryIncomplete = new EducationalLevelEnumeration(1, "Incomplete Primary School");
         public static EducationalLevelEnumeration PrimaryComplete = new EducationalLevelEnumeration(2, "Complete Primary School");
         public static EducationalLevelEnumeration HighSchoolIncomplete = new EducationalLevelEnumeration(3, "Incomplete High School");

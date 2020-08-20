@@ -38,7 +38,6 @@ namespace ValidPeople.UnitTests.Mappings
                 Revenue = person.Revenue,
                 Profession = person.Profession,
                 EducationalLevel = person.EducationalLevel,
-                Status = person.Status,
                 Cloned = person.Cloned
             };
         }

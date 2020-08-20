@@ -9,6 +9,7 @@ using ValidPeople.Domain.Entities;
 using ValidPeople.Application.Requests.People;
 using ValidPeople.UnitTests.Mappings;
 using System;
+using ValidPeople.Domain.Enumerations;
 
 namespace ValidPeople.UnitTests.UseCases
 {
@@ -26,7 +27,7 @@ namespace ValidPeople.UnitTests.UseCases
         [Fact]
         public async Task Execute_InsertPerson()
         {
-            var person = PersonFaker.Get().Generate().MapToAddRequest();
+            var person = PersonFaker.Get(StatusEnumeration.Active).Generate().MapToAddRequest();
             
             var result = await instance.Execute(person);
 

@@ -7,7 +7,7 @@ namespace ValidPeople.UnitTests.Fakers.Entities
 {
     public static class PersonFaker
     {
-        public static Faker<Domain.Entities.Person> Get()
+        public static Faker<Domain.Entities.Person> Get(StatusEnumeration status = null)
         {
             return new Faker<Domain.Entities.Person>().CustomInstantiator(f => new Domain.Entities.Person(f.Random.Guid(),
                 new Name(f.Person.FirstName, f.Person.LastName),
@@ -19,7 +19,7 @@ namespace ValidPeople.UnitTests.Fakers.Entities
                 f.Random.Double(),
                 f.Name.JobTitle(),
                 f.PickRandom(EducationalLevelEnumeration.GetAll()),
-                f.PickRandom(StatusEnumeration.GetAll()),
+                status ?? f.PickRandom(StatusEnumeration.GetAll()),
                 f.Random.Bool()));
         }
     }

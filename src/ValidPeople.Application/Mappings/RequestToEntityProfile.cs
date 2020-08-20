@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using AutoMapper;
 using ValidPeople.Application.Requests.People;
 using ValidPeople.Domain.Entities;
+using ValidPeople.Domain.Enumerations;
 
 namespace ValidPeople.Application.Mappings
 {
@@ -19,7 +20,7 @@ namespace ValidPeople.Application.Mappings
                 src.Revenue,
                 src.Profession,
                 src.EducationalLevel,
-                src.Status,
+                StatusEnumeration.Active,
                 src.Cloned
             ));
 

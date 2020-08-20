@@ -35,18 +35,9 @@ namespace ValidPeople.Domain.Enumerations
             return Parse<T, int>(id, item => item.Id == id);
         }
 
-        private static T Parse<T, K>(K value, Func<T, bool> predicate) where T : Enumeration, new()
-        {
-            var matchingItem = GetAll<T>().FirstOrDefault(predicate);
-
-            if (matchingItem == null)
-            {
-                var message = string.Format("'{0}' is not a valid value in {1}", value, typeof(T).Name);
-                throw new ApplicationException(message);
-            }
-
-            return matchingItem;
-        }
+        private static T Parse<T, K>(K value, Func<T, bool> predicate) 
+            where T : Enumeration, new() => 
+                GetAll<T>().FirstOrDefault(predicate);
 
         public override bool Equals(object obj)
         {

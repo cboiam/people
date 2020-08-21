@@ -10,6 +10,7 @@ Read and understand the existing code then do the following tasks.
 - Integrate FluentValidation with the web api (https://docs.fluentvalidation.net/en/latest/aspnet.html).
 - Treat the validation errors to be in the structure of a List of ErrorViewModel.
 - Start writing the validations described in the [Stories](#Stories) section. (All validators should be tested, preferably using helpers https://docs.fluentvalidation.net/en/latest/testing.html)
+- As a final test run the postman collection ([Running postman tests](#running-the-tests))
 
 ## Stories
 
@@ -79,6 +80,13 @@ Run command on the root folder or inside a test project folder:
 
 ```
 $ dotnet test
+```
+
+To run the tests on postman you can use the postman interface to run all requests or use the following commands on root folder:
+
+```
+$ npm install -g newman
+$ newman run ./PeopleValidations.postman_collection.json
 ```
 
 ## Built with

@@ -1,0 +1,3013 @@
+{
+	"info": {
+		"_postman_id": "0ef8c4b9-bf4f-49e5-89a2-cc9e90640f45",
+		"name": "PeopleValidations",
+		"description": "The final test to check if all validations are working.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Validate FirstName - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51e0879d-2b50-4107-b9a0-5e0610d1c9c3",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate FirstName - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2563d4b-ef3f-4d49-b508-216421c9736a",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": null,\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate FirstName - empty space",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2e933c55-e4c1-4b47-8a19-56ca85bc1860",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \" \",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate LastName - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52dce1ca-a601-464f-b045-6f4b56032dba",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate LastName - empty space",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2affce01-1b05-4b12-9092-4a269e787279",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \" \",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate LastName - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b1c5d127-fda2-4a3d-8965-323e70a284e9",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": null,\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Name - 101 characters lenght",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b440c759-e83b-439f-a3e8-06d88754ea72",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"51 lenght characters ------------------------------\",\r\n    \"lastName\": \"50 lenght characters -----------------------------\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Revenue - negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cbf091de-c3e4-445c-9e79-9bc75c60d3e2",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": -100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent FirstName - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4b03f4e6-6274-40fd-a1e8-74f6e725314a",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent FirstName - empty space",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79ae95a2-697a-4173-8b96-2ee8e607a8fb",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \" \",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent FirstName - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0447af87-ea3f-457d-bc56-3d25d234e60c",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": null,\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent LastName - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fc19c884-508d-4f85-ac32-31df85927334",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent LastName - empty space",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2c3ccfbf-b69a-4287-a48c-6e36399a0009",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \" \"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent LastName - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2e3703fe-bab1-4911-8fd9-a12629298d47",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": null\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent Name - 101 characters lenght",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "771ecb01-05c7-410b-8c16-404ff1185bfd",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"51 lenght characters ------------------------------\",\r\n        \"lastName\": \"50 lenght characters -----------------------------\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent Relation - Relation not registered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd09ff1b-9aa9-48d7-9900-83dfcfdfa1c0",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 999\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cf3f5096-4a23-4239-b5d2-9bbdab398d16",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": null,\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0cd49d8-52ba-42fb-957d-4f30cf1e6f51",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent - Three parents",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b044bff9-6509-47ab-8a4a-d6cf6294f928",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": null\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": null\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": null\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent - Cant have parents when cloned",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "19e6fe7a-a7a1-42a4-b030-7bf04e069fe4",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": null\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Birth - date in the future",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4a6cd1af-1788-45ba-a716-7630e2ae995b",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2050-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Email - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fc6e0613-65ca-46c7-a1d4-40c86cc2de48",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Email - wrong format",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9782a05a-0161-4e38-a0f5-c150151d459d",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"email\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Email - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "60a081e3-7b4f-4d6b-9954-b53d7ebdee5b",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": null,\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Hobby - Hobby not registered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2ff522d6-6e33-40fa-9aa7-be3d668f1cd5",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 999\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Hobby - Hobby cant be sports when developer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7063431c-bf02-42f9-b4aa-6d5052740d92",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 2,\r\n    \"name\": \"Sports\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Number - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4cf16ac-e26b-4aec-b186-13e5a189551f",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Number - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "558c788a-2172-4479-a39d-9c6aa5b88fd5",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": null,\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Number - wrong format",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "19a0ca02-9537-421d-a11d-de8f004090ec",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"94103686006\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Number - wrong format with characters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "de3fb0cc-fd66-4c80-8c5a-ce1e1ec26369",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.abc.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Number - invalid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d9bcfcf0-0dbe-4d8d-9f71-ef27672f7123",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-88\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Emission - date in the future",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cdc5701a-08c5-4365-92fe-a7fb3aa65cb2",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2050-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Expiration - date in the past",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "07b00572-6377-49ca-a4f1-30673a96a4cd",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2000-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate EducationalLevel - Educational level not registered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0679a5ce-a8c0-4bcc-8917-1dbbcdc6be4e",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 999\r\n  },\r\n  \"cloned\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate FirstName - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "658d5e94-0bf9-40a3-858e-f2815e06c836",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate FirstName - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b7d8645-dd40-4a33-840b-398555cca829",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": null,\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate FirstName - empty space",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1574cca4-e2cb-4646-a3f6-28b08c549cf3",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \" \",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate LastName - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2b40371a-5121-47fd-a4ae-5e3950569e54",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate LastName - empty space",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6f6212fb-62ad-45b0-b6b1-e2fc7a37e708",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \" \",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate LastName - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51d7e58d-58a8-4a0a-b5ff-f82d19a6b494",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": null,\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Name - 101 characters lenght",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5a8215cd-517b-4255-91b5-60072dadf647",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"51 lenght characters ------------------------------\",\r\n    \"lastName\": \"50 lenght characters -----------------------------\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Revenue - negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a1232c78-756c-4147-b0cd-4bd1847c4279",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": -100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent FirstName - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d56d9bab-8535-4027-bde8-1606999fc2a7",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent FirstName - empty space",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "04aadc01-dfad-4f3e-97bc-7206fd8c34c9",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \" \",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent FirstName - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51794c30-113f-4f23-b7c7-9ba672e072f2",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": null,\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent LastName - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2a3596ee-bc5b-4fc8-b53e-9ad4ec9347ab",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent LastName - empty space",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f82b839c-f4e9-40b2-836c-11d173c9b9d6",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \" \"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent LastName - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ce45c08a-b398-412f-a038-b9ee1ef579cc",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": null\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent Name - 101 characters lenght",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6981f58d-1b3c-4542-941a-01e03d02a059",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"51 lenght characters ------------------------------\",\r\n        \"lastName\": \"50 lenght characters -----------------------------\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent Relation - Relation not registered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8baa6e7b-360f-457a-b4e2-e8b3539b0f12",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 999\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4829db59-1512-4004-80e5-4dc433ae395b",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": null,\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a8caa31-0f48-4529-b981-7acb163d1eff",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent - Three parents",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9c1e0ab9-aa2e-4216-a185-2082c1ada5d9",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": null\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": null\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": null\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Parent - Cant have parents when cloned",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "982e1661-c6b3-489c-bbe7-1310cf7dfcf5",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": null\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": true,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Birth - date in the future",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6bd6dcd7-c03e-4f90-849a-fc3b5c056d7b",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2050-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Email - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9f147b48-4b54-437d-9c82-8ba90e5fee0f",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Email - wrong format",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51fb0ed4-1577-428e-b1ea-24cda8b73b03",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"email\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Email - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09819017-d259-44fc-95f3-8e6dbf71a63e",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": null,\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Hobby - Hobby not registered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74f750ac-d6fb-4356-9ddc-b312c706aa12",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 999\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Hobby - Hobby cant be sports when developer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "95dc4202-4203-4834-8e1f-dc0e1139880f",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 2,\r\n    \"name\": \"Sports\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Number - empty",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5df7fb4b-b99a-4997-b9ff-aa918449cc87",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Number - null",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a092a6d7-7870-47be-ab80-e41db663f226",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": null,\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Number - wrong format",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f09ed6d3-9712-4d5a-894a-1fe313db6308",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"94103686006\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Number - wrong format with characters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "86853337-b91a-4268-a59d-aa73dcc1cd69",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.abc.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Number - invalid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e44b77cd-dc7d-4d49-97f2-771d9e798f7b",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-88\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Emission - date in the future",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9cd13c82-ca81-4a6b-831e-65374c8297f6",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2050-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": true,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Cpf Expiration - date in the past",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f17089e6-b7ef-4e9d-a813-b4753cd8ead3",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2000-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate EducationalLevel - Educational level not registered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d23be778-2aa2-425e-aa9e-661a69d97e26",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 999\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 2,\r\n    \"name\": \"Active\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Status - Status not registered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1ee070d1-e270-4ed5-b9df-79afe8481bab",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": {\r\n    \"firstName\": \"FirstName\",\r\n    \"lastName\": \"LastName\"\r\n  },\r\n  \"email\": \"test@email.com\",\r\n  \"birth\": \"2020-08-20T15:25:23.867Z\",\r\n  \"parents\": [\r\n    {\r\n      \"name\": {\r\n        \"firstName\": \"FatherFirstName\",\r\n        \"lastName\": \"FatherLastName\"\r\n      },\r\n      \"relation\": {\r\n        \"id\": 1,\r\n        \"name\": \"Father\"\r\n      }\r\n    }\r\n  ],\r\n  \"cpf\": {\r\n    \"number\": \"941.036.860-06\",\r\n    \"expiration\": \"2050-08-20T15:25:23.867Z\",\r\n    \"emission\": \"2000-08-20T15:25:23.867Z\"\r\n  },\r\n  \"hobby\": {\r\n    \"id\": 1,\r\n    \"name\": \"Gaming\"\r\n  },\r\n  \"revenue\": 100,\r\n  \"profession\": \"Developer\",\r\n  \"educationalLevel\": {\r\n    \"id\": 1,\r\n    \"name\": \"Incomplete Primary School\"\r\n  },\r\n  \"cloned\": false,\r\n  \"status\": {\r\n    \"id\": 999\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/people/4807a6a4-fb16-4fc8-957c-e9f343f3e809",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"people",
+						"4807a6a4-fb16-4fc8-957c-e9f343f3e809"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

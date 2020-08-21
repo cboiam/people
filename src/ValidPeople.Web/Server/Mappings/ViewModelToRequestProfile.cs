@@ -15,14 +15,17 @@ namespace ValidPeople.Web.Server.Mappings
             CreateMap<NameViewModel, NameRequest>();
             CreateMap<CpfViewModel, CpfRequest>();
             CreateMap<ParentViewModel, ParentRequest>();
-            CreateMap<EnumerationViewModel, HobbyEnumeration>()
-                .ConvertUsing((src) => Enumeration.FromValue<HobbyEnumeration>(src.Id));
-            CreateMap<EnumerationViewModel, RelationEnumeration>()
-                .ConvertUsing((src) => Enumeration.FromValue<RelationEnumeration>(src.Id));
-            CreateMap<EnumerationViewModel, EducationalLevelEnumeration>()
-                .ConvertUsing((src) => Enumeration.FromValue<EducationalLevelEnumeration>(src.Id));
-            CreateMap<EnumerationViewModel, StatusEnumeration>()
-                .ConvertUsing((src) => Enumeration.FromValue<StatusEnumeration>(src.Id));
+
+            CreateMap<HobbyEnumeration>();
+            CreateMap<RelationEnumeration>();
+            CreateMap<EducationalLevelEnumeration>();
+            CreateMap<StatusEnumeration>();
+        }
+
+        private void CreateMap<T>() where T : Enumeration, new()
+        {
+            CreateMap<EnumerationViewModel, T>()
+                .ConvertUsing((src) => Enumeration.FromValue<T>(src.Id));
         }
     }
 }

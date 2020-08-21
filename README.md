@@ -18,33 +18,33 @@ Read and understand the existing code then do the following tasks.
 
 Add the following validations to the POST endpoint
 
-| Field                 | Validation                                              | Fail message                             |
-| --------------------- | ------------------------------------------------------- | ---------------------------------------- |
-| Name.FirstName        | Mandatory and without empty spaces                      | First name should not be empty.          |
-| Name.LastName         | Mandatory and without empty spaces                      | Last name should not be empty.           |
-| Birth                 | Should be in the past                                   | You weren't born yet.                    |
-| Email                 | Mandatory                                               | Email should not be empty.               |
-| Email                 | Email format when filled                                | This is an invalid email.                |
-| Hobby                 | Is contained in the HobbyEnumeration                    | Select one of the provided hobbies.      |
-| Parent.Name.FirstName | Mandatory and without empty spaces                      | Parent's First name should not be empty. |
-| Parent.Name.LastName  | Mandatory and without empty spaces                      | Parent's Last name should not be empty.  |
-| Parent.Relation       | Is contained in the RelationEnumeration                 | Select one of the provided relations.    |
-| Cpf.Number            | Mandatory                                               | Cpf number should not be empty.          |
-| Cpf.Number            | Formatted with mask 999.999.999-00                      | Cpf format is invalid.                   |
-| Cpf.Number            | Digit validation                                        | Cpf is invalid.                          |
-| Cpf.Emission          | Should be in the past                                   | Emission should be in the past.          |
-| Cpf.Expiration        | Should be in the future                                 | Expiration should be in the future.      |
+| Field                 | Validation                                              | Fail message                                   |
+| --------------------- | ------------------------------------------------------- | ---------------------------------------------- |
+| Name.FirstName        | Mandatory and without empty spaces                      | First name should not be empty.                |
+| Name.LastName         | Mandatory and without empty spaces                      | Last name should not be empty.                 |
+| Birth                 | Should be in the past                                   | You weren't born yet.                          |
+| Email                 | Mandatory                                               | Email should not be empty.                     |
+| Email                 | Email format when filled                                | This is an invalid email.                      |
+| Hobby                 | Is contained in the HobbyEnumeration                    | Select one of the provided hobbies.            |
+| Parent.Name.FirstName | Mandatory and without empty spaces                      | Parent's First name should not be empty.       |
+| Parent.Name.LastName  | Mandatory and without empty spaces                      | Parent's Last name should not be empty.        |
+| Parent.Relation       | Is contained in the RelationEnumeration                 | Select one of the provided relations.          |
+| Cpf.Number            | Mandatory                                               | Cpf number should not be empty.                |
+| Cpf.Number            | Formatted with mask 999.999.999-00                      | Cpf format is invalid.                         |
+| Cpf.Number            | Digit validation                                        | Cpf is invalid.                                |
+| Cpf.Emission          | Should be in the past                                   | Emission should be in the past.                |
+| Cpf.Expiration        | Should be in the future                                 | Expiration should be in the future.            |
 
 ### Change validations
 
 Add validations to both endpoints:
 
-| Field            | Validation                                       | Fail message                |
-| ---------------- | ------------------------------------------------ | --------------------------- |
-| Parent           | Should have at least one                         | You need a parent.          |
-| Parent           | Should have a maximum of two                     | Too much parents.           |
-| Parent           | If cloned then need to have no parents           | Clones don't have parents.  |
-| EducationalLevel | Is contained in the EducationalLevelEnumeration  | Can't regress any level.    |
+| Field            | Validation                                       | Fail message                                      |
+| ---------------- | ------------------------------------------------ | ------------------------------------------------- |
+| Parent           | Should have at least one                         | You need a parent.                                |
+| Parent           | Should have a maximum of two                     | Too much parents.                                 |
+| Parent           | If cloned then need to have no parents           | Clones don't have parents.                        |
+| EducationalLevel | Is contained in the EducationalLevelEnumeration  | Select one of the provided educational levels.    |
 
 
 Update validations:

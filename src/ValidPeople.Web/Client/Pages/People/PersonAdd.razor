@@ -10,12 +10,19 @@
             Errors="errors"
             ShowNotification="showNotification"
             Submit="Submit"
-            Reset="Reset" />
+            Reset="Reset"
+            Resource="resource"/>
 
 @code {
     private bool showNotification;
     private IEnumerable<ErrorViewModel> errors;
     private PersonViewModel person = CreatePerson();
+    private Resource resource = new Resource
+    {
+        Hobbies = new List<EnumerationViewModel>(),
+        ParentRelations = new List<EnumerationViewModel>(),
+        EducationalLevels = new List<EnumerationViewModel>()
+    };
 
     private static PersonViewModel CreatePerson()
     {
@@ -24,13 +31,18 @@
             Name = new NameViewModel(),
             Cpf = new CpfViewModel(),
             Parents = new List<ParentViewModel>
-            {
+        {
                 new ParentViewModel
                 {
                     Name = new NameViewModel()
                 }
             }
         };
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        resource = await Http.GetFromJsonAsync<Resource>("/api/resources");
     }
 
     private void Reset()

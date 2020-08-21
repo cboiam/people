@@ -1,5 +1,6 @@
 ﻿@using ValidPeople.Web.Shared
 @using ValidPeople.Web.Shared.People
+@using ValidPeople.Web.Client.Helpers
 @inject HttpClient Http
 
 <div class="container">
@@ -9,48 +10,65 @@
                 <div class="person-form-data person-form-data-label">Name</div>
                 <div class="person-form-data person-form-tab">
                     <div>
-                        <label class="person-form-data-label">First Name</label>
-                        <InputText @bind-Value="Person.Name.FirstName" class="form-control" />
+                        <label class="person-form-data-label" for="first-name">First Name</label>
+                        <InputText @bind-Value="Person.Name.FirstName" class="form-control" id="first-name" />
                     </div>
                     <div>
-                        <label class="person-form-data-label">Last Name</label>
-                        <InputText @bind-Value="Person.Name.LastName" class="form-control" />
+                        <label class="person-form-data-label" for="last-name">Last Name</label>
+                        <InputText @bind-Value="Person.Name.LastName" class="form-control" id="last-name" />
                     </div>
                 </div>
                 <div>
-                    <label class="person-form-data-label">Birth Date</label>
-                    <InputDate @bind-Value="@Person.Birth" class="form-control"></InputDate>
+                    <label class="person-form-data-label" for="birth">Birth Date</label>
+                    <InputDate @bind-Value="@Person.Birth" class="form-control" id="birth" />
                 </div>
                 <div>
-                    <label class="person-form-data-label">Email</label>
-                    <InputText @bind-Value="Person.Email" class="form-control" />
+                    <label class="person-form-data-label" for="email">Email</label>
+                    <InputText @bind-Value="Person.Email" class="form-control" id="email" />
                 </div>
                 <div>
-                    <label class="person-form-data-label">Revenue</label>
-                    <InputNumber @bind-Value="Person.Revenue" class="form-control" />
+                    <label class="person-form-data-label" for="revenue">Revenue</label>
+                    <InputNumber @bind-Value="Person.Revenue" class="form-control" id="revenue" />
+                </div>
+                <div>
+                    <label class="person-form-data-label" for="profession">Profession</label>
+                    <InputText @bind-Value="Person.Profession" class="form-control" id="profession" />
                 </div>
                 <div>
                     <label class="person-form-data-label">Hobby</label>
-                    <select @onchange="e => Person.Hobby = Select(e, resource.Hobbies)" class="form-control">
-                        @foreach (var hobby in resource.Hobbies)
+                    <select @onchange="e => Person.Hobby = e.SelectEnumeration(Resource.Hobbies)" class="form-control">
+                        @foreach (var hobby in Resource.Hobbies)
                         {
                             <option value="@hobby.Id" selected="@(hobby.Id == Person.Hobby?.Id)">@hobby.Name</option>
                         }
                     </select>
                 </div>
+                <div>
+                    <label class="person-form-data-label">Educational Level</label>
+                    <select @onchange="e => Person.EducationalLevel = e.SelectEnumeration(Resource.EducationalLevels)" class="form-control">
+                        @foreach (var level in Resource.EducationalLevels)
+                        {
+                            <option value="@level.Id" selected="@(level.Id == Person.EducationalLevel?.Id)">@level.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-check person-form-data-label">
+                    <InputCheckbox @bind-Value="Person.Cloned" class="form-check-input" id="cloned" />
+                    <label class="form-check-label" for="cloned">Cloned</label>
+                </div>
                 <div class="person-form-data person-form-data-label">Cpf</div>
                 <div class="person-form-data person-form-tab">
                     <div>
-                        <label class="person-form-data-label">Number</label>
-                        <InputText @bind-Value="Person.Cpf.Number" class="form-control" />
+                        <label class="person-form-data-label" for="cpf-number">Number</label>
+                        <InputText @bind-Value="Person.Cpf.Number" class="form-control" id="cpf-number" />
                     </div>
                     <div>
-                        <label class="person-form-data-label">Emission Date</label>
-                        <InputDate @bind-Value="@Person.Cpf.Emission" class="form-control"></InputDate>
+                        <label class="person-form-data-label" for="cpf-emission">Emission Date</label>
+                        <InputDate @bind-Value="@Person.Cpf.Emission" class="form-control" id="cpf-emission"></InputDate>
                     </div>
                     <div>
-                        <label class="person-form-data-label">Expiration Date</label>
-                        <InputDate @bind-Value="@Person.Cpf.Expiration" class="form-control"></InputDate>
+                        <label class="person-form-data-label" for="cpf-expiration">Expiration Date</label>
+                        <InputDate @bind-Value="@Person.Cpf.Expiration" class="form-control" id="cpf-expiration"></InputDate>
                     </div>
                 </div>
                 <div class="person-form-data person-form-parents">
@@ -69,18 +87,18 @@
                         </div>
                         <div class="person-form-data person-form-tab">
                             <div>
-                                <label class="person-form-data-label">First Name</label>
-                                <InputText @bind-Value="parent.Name.FirstName" class="form-control" />
+                                <label class="person-form-data-label" for="@($"parent-{Person.Parents.IndexOf(parent)}-first-name")">First Name</label>
+                                <InputText @bind-Value="parent.Name.FirstName" class="form-control" id="@($"parent-{Person.Parents.IndexOf(parent)}-first-name")" />
                             </div>
                             <div>
-                                <label class="person-form-data-label">Last Name</label>
-                                <InputText @bind-Value="parent.Name.LastName" class="form-control" />
+                                <label class="person-form-data-label" for="@($"parent-{Person.Parents.IndexOf(parent)}-last-name")">Last Name</label>
+                                <InputText @bind-Value="parent.Name.LastName" class="form-control" id="@($"parent-{Person.Parents.IndexOf(parent)}-last-name")" />
                             </div>
                         </div>
                         <div>
                             <label class="person-form-data-label">Relation</label>
-                            <select @onchange="e => parent.Relation = Select(e, resource.ParentRelations)" class="form-control">
-                                @foreach (var relation in resource.ParentRelations)
+                            <select @onchange="e => parent.Relation = e.SelectEnumeration(Resource.ParentRelations)" class="form-control">
+                                @foreach (var relation in Resource.ParentRelations)
                                 {
                                     <option value="@relation.Id" selected="@(relation.Id == parent.Relation?.Id)">@relation.Name</option>
                                 }
@@ -88,6 +106,7 @@
                         </div>
                     </div>
                 }
+                @ChildContent
             </div>
             <div class="person-form-controll">
                 <button class="btn person-controll-button" type="submit">Submit</button>
@@ -110,18 +129,19 @@
     public PersonViewModel Person { get; set; }
 
     [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
     public Func<Task> Submit { get; set; }
 
     [Parameter]
     public Action Reset { get; set; }
 
+    [Parameter]
+    public Resource Resource { get; set; }
+
     private bool CanAddParents => Person.Parents.Count < 2;
     private void HideNotification() => ShowNotification = false;
-    private Resource resource = new Resource
-    {
-        Hobbies = new List<EnumerationViewModel>(),
-        ParentRelations = new List<EnumerationViewModel>()
-    };
 
     private void AddParent()
     {
@@ -134,16 +154,5 @@
     private void RemoveParent(ParentViewModel parent)
     {
         Person.Parents.Remove(parent);
-    }
-
-    private EnumerationViewModel Select(ChangeEventArgs evt, IEnumerable<EnumerationViewModel> values)
-    {
-        var value = evt.Value.ToString();
-        return values.First(h => h.Id == int.Parse(value));
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        resource = await Http.GetFromJsonAsync<Resource>("/api/resources");
     }
 }

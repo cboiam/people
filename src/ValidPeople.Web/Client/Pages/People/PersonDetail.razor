@@ -29,8 +29,21 @@ else
                         @person.Email
                     </div>
                     <div>
+                        <span class="person-detail-data-label">Profession</span>
+                        @person.Profession
+                    </div>
+                    <div>
                         <span class="person-detail-data-label">Revenue</span>
                         $ @person.Revenue
+                    </div>
+                    <div>
+                        <span class="person-detail-data-label">
+                            @(person.Cloned ? "Clone" : "Legit")
+                        </span>
+                    </div>
+                    <div>
+                        <span class="person-detail-data-label">Educational Level</span>
+                        @person.EducationalLevel.Name
                     </div>
                     <div>
                         <span class="person-detail-data-label">Hobby</span>
@@ -51,20 +64,27 @@ else
                             @person.Cpf.Expiration.ToString("dd/MM/yyyy")
                         </div>
                     </div>
-                    <div class="person-detail-data person-detail-data-label">Parents</div>
-                    @foreach (var parent in person.Parents)
+                    @if (person.Parents != null && person.Parents.Any())
                     {
-                        <div class="person-detail-data person-detail-tab">
-                            <div>
-                                <span class="person-detail-data-label">Name</span>
-                                @parent.Name.GetFormattedName()
+                        <div class="person-detail-data person-detail-data-label">Parents</div>
+                        @foreach (var parent in person.Parents)
+                        {
+                            <div class="person-detail-data person-detail-tab">
+                                <div>
+                                    <span class="person-detail-data-label">Name</span>
+                                    @parent.Name.GetFormattedName()
+                                </div>
+                                <div>
+                                    <span class="person-detail-data-label">Relation</span>
+                                    @parent.Relation.Name
+                                </div>
                             </div>
-                            <div>
-                                <span class="person-detail-data-label">Relation</span>
-                                @parent.Relation.Name
-                            </div>
-                        </div>
+                        }
                     }
+                    <div>
+                        <span class="person-detail-data-label">Status</span>
+                        @person.Status.Name
+                    </div>
                 </div>
             </div>
         </div>

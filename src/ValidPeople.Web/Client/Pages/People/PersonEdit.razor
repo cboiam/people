@@ -1,6 +1,7 @@
 ﻿@page "/people/{id}/edit"
 @using ValidPeople.Web.Shared
 @using ValidPeople.Web.Shared.People
+@using ValidPeople.Web.Client.Helpers
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 
@@ -21,7 +22,18 @@ else
                 Errors="errors"
                 ShowNotification="showNotification"
                 Submit="Submit"
-                Reset="Reset"/>
+                Reset="Reset"
+                Resource="resource">
+        <div>
+            <label class="person-form-data-label">Status</label>
+            <select @onchange="e => person.Status = e.SelectEnumeration(resource.Status)" class="form-control">
+                @foreach (var status in resource.Status)
+                {
+                    <option value="@status.Id" selected="@(status.Id == person.Status?.Id)">@status.Name</option>
+                }
+            </select>
+        </div>
+    </PersonForm>
 }
 
 @code {
@@ -32,6 +44,13 @@ else
     private bool showNotification;
     private IEnumerable<ErrorViewModel> errors;
     private PersonViewModel person;
+    private Resource resource = new Resource
+    {
+        Hobbies = new List<EnumerationViewModel>(),
+        ParentRelations = new List<EnumerationViewModel>(),
+        EducationalLevels = new List<EnumerationViewModel>(),
+        Status = new List<EnumerationViewModel>()
+    };
 
     private void Reset()
     {
@@ -54,7 +73,11 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        var personResponse = await Http.GetAsync("/api/people/" + Id);
+        var personResponseTask = Http.GetAsync("/api/people/" + Id);
+        var resourceTask = Http.GetFromJsonAsync<Resource>("/api/resources");
+
+        var personResponse = await personResponseTask;
+        resource = await resourceTask;
 
         loaded = true;
 

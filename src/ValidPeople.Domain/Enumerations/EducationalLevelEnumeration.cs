@@ -4,8 +4,8 @@ namespace ValidPeople.Domain.Enumerations
 {
     public class EducationalLevelEnumeration : Enumeration
     {
-        public EducationalLevelEnumeration() { 
-        }
+        public EducationalLevelEnumeration() { }
+
         public EducationalLevelEnumeration(int id, string name) 
             : base(id, name) { }
 

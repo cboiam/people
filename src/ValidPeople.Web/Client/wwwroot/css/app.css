@@ -6,6 +6,10 @@ html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+body {
+    overflow: hidden;
+}
+
 a, .btn-link {
     color: #0366d6;
 }
@@ -30,6 +34,8 @@ app {
 
 .main {
     flex: 1;
+    overflow: auto;
+    height: 100vh;
 }
 
     .main .top-row {

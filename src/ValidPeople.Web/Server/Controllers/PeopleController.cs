@@ -21,8 +21,8 @@ namespace ValidPeople.Web.Server.Controllers
         private readonly IUpdatePersonUseCase updatePersonUseCase;
         private readonly IMapper mapper;
 
-        public PeopleController(IGetPeopleUseCase getPeopleUseCase, 
-            IGetPersonUseCase getPersonUseCase, 
+        public PeopleController(IGetPeopleUseCase getPeopleUseCase,
+            IGetPersonUseCase getPersonUseCase,
             IDeletePersonUseCase deletePersonUseCase,
             IAddPersonUseCase addPersonUseCase,
             IUpdatePersonUseCase updatePersonUseCase,
@@ -43,7 +43,7 @@ namespace ValidPeople.Web.Server.Controllers
         {
             var people = await getPeopleUseCase.Execute();
             var result = mapper.Map<IEnumerable<PersonListViewModel>>(people);
-            
+
             return Ok(result);
         }
 
@@ -55,8 +55,8 @@ namespace ValidPeople.Web.Server.Controllers
         {
             var person = await getPersonUseCase.Execute(id);
             var result = mapper.Map<PersonViewModel>(person);
-            
-            if(result == null)
+
+            if (result == null)
             {
                 return NotFound();
             }
@@ -70,7 +70,7 @@ namespace ValidPeople.Web.Server.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<StatusCodeResult> Delete(Guid id)
         {
-            if(await deletePersonUseCase.Execute(id))
+            if (await deletePersonUseCase.Execute(id))
             {
                 return NoContent();
             }
@@ -96,7 +96,7 @@ namespace ValidPeople.Web.Server.Controllers
             person.Id = id;
             var result = await updatePersonUseCase.Execute(mapper.Map<PersonUpdateRequest>(person));
 
-            if(!result)
+            if (!result)
             {
                 return NotFound();
             }

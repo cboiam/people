@@ -67,7 +67,7 @@ else
             return;
         }
 
-        var errors = await response.Content.ReadFromJsonAsync<IEnumerable<ErrorViewModel>>();
+        errors = await response.Content.ReadFromJsonAsync<IEnumerable<ErrorViewModel>>();
         showNotification = true;
     }
 

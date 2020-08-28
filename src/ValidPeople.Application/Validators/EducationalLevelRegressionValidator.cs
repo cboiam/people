@@ -19,6 +19,12 @@ namespace ValidPeople.Application.Validators
         public async Task<bool> Validate(PersonViewModel person, EnumerationViewModel educationalLevel, CancellationToken cancellationToken)
         {
             var existingPerson = await getPersonUseCase.Execute(person.Id);
+
+            if(existingPerson == null)
+            {
+                return true;
+            }
+
             return educationalLevel.Id >= existingPerson.EducationalLevel.Id;
         }
     }

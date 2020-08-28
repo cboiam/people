@@ -7,6 +7,7 @@ using AutoMapper;
 using ValidPeople.Web.Shared.People;
 using Microsoft.AspNetCore.Http;
 using ValidPeople.Application.Requests.People;
+using FluentValidation.AspNetCore;
 
 namespace ValidPeople.Web.Server.Controllers
 {
@@ -91,7 +92,7 @@ namespace ValidPeople.Web.Server.Controllers
         [Produces("application/json")]
         [ProducesResponseType(typeof(Guid), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Guid>> Update(Guid id, PersonViewModel person)
+        public async Task<ActionResult<Guid>> Update(Guid id, [CustomizeValidator(RuleSet = "default, Update")] PersonViewModel person)
         {
             person.Id = id;
             var result = await updatePersonUseCase.Execute(mapper.Map<PersonUpdateRequest>(person));

@@ -9,8 +9,8 @@
             @foreach (var error in Errors)
             {
                 <div class="notification-error card">
+                    <div>Field: @error.Field</div>
                     <div>Message: @error.Message</div>
-                    <div>Value: @error.Value</div>
                 </div>
             }
             <hr />

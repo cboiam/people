@@ -47,6 +47,8 @@ Add validations to both endpoints:
 | EducationalLevel | Is contained in the EducationalLevelEnumeration | Select one of the provided educational levels. |
 | Revenue          | Positive                                        | Revenue shouldn't be negative.                 |
 
+Update validations of first story:
+
 | Field | Validation                                              | Fail message               |
 | ----- | ------------------------------------------------------- | -------------------------- |
 | Email | Mandatory when age is lesser then 60                    | Email should not be empty. |

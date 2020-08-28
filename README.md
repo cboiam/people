@@ -45,15 +45,13 @@ Add validations to both endpoints:
 | Parent           | Should have a maximum of two                    | Too much parents.                              |
 | Parent           | If cloned then need to have no parents          | Clones don't have parents.                     |
 | EducationalLevel | Is contained in the EducationalLevelEnumeration | Select one of the provided educational levels. |
+| Revenue          | Positive                                        | Revenue shouldn't be negative.                 |
 
-Update validations of first story:
-
-| Field   | Validation                                              | Fail message                   |
-| ------- | ------------------------------------------------------- | ------------------------------ |
-| Email   | Mandatory when age is lesser then 60                    | Email should not be empty.     |
-| Name    | Combined names should have a maximum of 100 characteres | Name is too long.              |
-| Revenue | Positive                                                | Revenue shouldn't be negative. |
-| Hobby   | Should not be Sports when Profession is Developer       | I doubt it.                    |
+| Field | Validation                                              | Fail message               |
+| ----- | ------------------------------------------------------- | -------------------------- |
+| Email | Mandatory when age is lesser then 60                    | Email should not be empty. |
+| Name  | Combined names should have a maximum of 100 characteres | Name is too long.          |
+| Hobby | Should not be Sports when Profession is Developer       | I doubt it.                |
 
 Add validations only for PUT route (https://docs.fluentvalidation.net/en/latest/rulesets.html, https://docs.fluentvalidation.net/en/latest/webapi.html#validator-customization):
 
@@ -84,7 +82,7 @@ To run the tests on postman you can use the postman interface to run all request
 
 ```
 $ npm install -g newman
-$ newman run ./PeopleValidations.postman_collection.json
+$ newman run PeopleValidations.postman_collection.json --insecure
 ```
 
 ## Built with

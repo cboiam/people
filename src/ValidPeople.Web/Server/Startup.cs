@@ -3,38 +3,33 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ValidPeople.Web.Server.Mappings;
-using ValidPeople.Application.Mappings;
-using ValidPeople.Infra.Mappings;
-using AutoMapper;
 using ValidPeople.Web.Server.Configurations;
+using FluentValidation.AspNetCore;
 
 namespace ValidPeople.Web.Server
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
-            services.RegisterDependencies(Configuration);
-
-            services.AddAutoMapper(typeof(ModelToEntityProfile),
-                typeof(EntityToResponseProfile),
-                typeof(ResponseToViewModelMappings),
-                typeof(ViewModelToRequestProfile),
-                typeof(RequestToEntityProfile),
-                typeof(EntityToModelProfile));
+            services.RegisterDependencies();
+            services.BindConfigurations(Configuration);
+            services.AddAutoMapperProfiles();
 
             services.AddSwaggerGen();
+            services.AddHttpClient();
 
             services.AddControllersWithViews();
-            services.AddRazorPages();
+            services.AddRazorPages()
+                .ConfigureApiBehaviorOptions(options => options.UseErrorTemplate())
+                .AddFluentValidation();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

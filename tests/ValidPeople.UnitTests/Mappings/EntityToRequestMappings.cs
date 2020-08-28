@@ -1,12 +1,10 @@
 using System.Linq;
 using ValidPeople.Application.Requests.People;
 using ValidPeople.Domain.Entities;
-using ValidPeople.Web.Shared;
-using ValidPeople.Web.Shared.People;
 
 namespace ValidPeople.UnitTests.Mappings
 {
-    public static class EntityToRequestMappings
+    internal static class EntityToRequestMappings
     {
         public static PersonAddRequest MapToAddRequest(this Person person)
         {

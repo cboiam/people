@@ -4,7 +4,7 @@ using ValidPeople.Web.Server.Mappings;
 
 namespace ValidPeople.UnitTests.Mappings
 {
-    public static class MapperConfiguration
+    internal static class MapperConfiguration
     {
         public static AutoMapper.IMapper instance = new AutoMapper.MapperConfiguration(config =>
         {

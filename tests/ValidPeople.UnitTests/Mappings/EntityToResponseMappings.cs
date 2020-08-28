@@ -7,7 +7,7 @@ using ValidPeople.Web.Shared.People;
 
 namespace ValidPeople.UnitTests.Mappings
 {
-    public static class EntityToResponseMappings
+    internal static class EntityToResponseMappings
     {
         public static IEnumerable<PersonListResponse> MapToResponse(this IEnumerable<Person> people)
         {
